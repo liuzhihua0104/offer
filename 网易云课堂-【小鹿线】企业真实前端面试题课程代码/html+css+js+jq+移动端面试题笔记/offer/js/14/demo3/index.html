@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+
+var arr = [1,2,3,2,3];
+Array.prototype.unique = function(){
+
+	var brr = [],
+		obj = {};
+
+	for(var i=0;i<this.length;i++){
+
+
+		if(!obj[this[i]]){
+
+			obj[this[i]]=true;
+			brr.push(this[i])
+
+		}
+
+	}
+	return brr;
+}
+
+console.log(arr.unique());
+
+</script>
+	
+</body>
+</html>

@@ -1,0 +1,53 @@
+一、vue页面的生命周期？（2+）
+	
+	beforeCreate
+	created
+
+
+	beforeMount
+	mounted
+
+
+	beforeUpdate
+	updated
+
+
+	beforeDestroy
+	destroyed
+
+
+-----使用了 keep-alive 就会多2个生命周期：
+	activated
+	deactivated
+
+二、生命周期的理解
+
+	
+	总共分为：8个阶段
+
+		创建前/后：
+
+			beforeCreate ：vue实例的挂载元素$el和数据对象data都为undefined，还未初始化。
+
+			created      ： vue实例的数据对象data有了，但是$el还是没有
+
+
+		载入前/后
+
+			beforeMount : vue实例的$el和data都初始化了,但还是挂载之前为虚拟dom节点，data.msg还未替换。
+
+			mounted :  vue实例挂载完成,data.msg成功渲染的
+
+
+		更新前/后
+
+			当data变化时，会触发：beforeUpdate、updated
+
+		销毁前/后
+
+			当销毁的时候，会触发：	beforeDestroy、destroyed
+
+
+三、DOM 渲染在哪个周期中就已经完成 ： mounted
+
+

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+
+<script>
+/*原型链
+function a(){
+	this.a='aaaa';
+}
+function b(){
+	this.b='bbbb';
+}
+
+b.prototype=new a();
+
+var obj = new b();
+console.log(obj.a)
+*/
+
+/*借用构造函数*/
+function a(){
+	this.a='aaaa';
+}
+function b(){
+	a.call(this)
+	this.b='bbbb';
+}
+var obj = new b();
+console.log(obj.a)
+
+
+</script>
+
+</body>
+</html>

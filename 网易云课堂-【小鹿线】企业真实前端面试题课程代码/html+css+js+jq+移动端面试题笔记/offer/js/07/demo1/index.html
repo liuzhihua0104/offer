@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+function Fun(){
+
+	this.name="张三";
+
+}
+Fun.prototype.run = function(){
+	return 'run方法';
+}
+
+var obj = new Fun();
+
+//1》new Object() ==〉创建对象
+
+
+//2》 obj.__proto__=Fun.prototype 方法或者属性，赋值
+
+
+//3> this指向  Fun.call(obj)
+
+
+
+</script>
+	
+</body>
+</html>

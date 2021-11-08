@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+
+function flat(arr,R){
+	
+	var R = R || [];
+	for(var i=0;i<arr.length;i++){
+
+
+		if(Object.prototype.toString.call(arr[i]) =='[object Array]'){
+
+			flat(arr[i],R)
+
+		}else{
+			R.push(arr[i]);
+		}
+
+	}
+	return R;
+
+
+}
+
+console.log(flat([1,[2,3,4,[5,6],7],8]));
+
+</script>
+	
+</body>
+</html>

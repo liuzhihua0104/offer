@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+
+var obj1 = {//原始对象
+	age:18,
+	arr:[1,2,3]
+}
+
+var obj2 = {}//自己对象
+
+function copy(obj1,obj2){
+
+	for(var k in obj1){
+
+
+		if(typeof obj1[k]=='object'){
+			
+obj2[k]=(obj1[k].constructor==Array)?[]:{};
+copy(obj1[k],obj2[k])
+
+		}else{
+			obj2[k]=obj1[k];
+		}
+	}
+
+	return obj2;
+
+}
+
+var obj2 = copy(obj1,obj2);
+
+obj1.arr[0]='zhangsan';
+
+console.log(obj1.arr,obj2.arr)
+
+
+</script>
+	
+</body>
+</html>

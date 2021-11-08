@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+var Person = function (){}
+Person.prototype.data = {
+	msg:'123'
+}
+var obj1 = new Person();
+var obj2 = new Person();
+
+obj1.data.msg = 456;
+
+console.log(obj2.data.msg);
+
+
+</script>
+
+</body>
+</html>

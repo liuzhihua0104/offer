@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<time></time>
+
+<script>
+function isDate(){
+
+	var time = document.getElementsByTagName("time")[0];
+	var date = new Date();
+	var year = date.getFullYear();
+
+
+	var newDate = new Date();
+	newDate.setFullYear( year+1 ) //2019年
+	newDate.setMonth(0,1);//月
+	newDate.setHours(0,0,0);//日
+
+	var iTime = newDate.getTime()-date.getTime();
+	var iSecond = parseInt(iTime/1000);
+	var newDay = parseInt(iSecond/24/60/60);
+	var modeDay = iSecond%(24*60*60);
+	var newHour = parseInt(modeDay/60/60);
+	var modeHour = modeDay%(60*60);
+	var newMinute = parseInt(modeHour/60);
+	var modeMinute = modeHour%60;
+	var newSecond = parseInt(modeMinute);
+
+
+	time.innerHTML = year+"年"+newDay+"天"+newHour+"小时"+newMinute+"分钟"+newSecond+"秒";
+
+}
+isDate();
+setInterval(isDate,1000)
+
+
+</script>
+
+	
+</body>
+</html>

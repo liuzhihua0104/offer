@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+
+var foo = function(){
+	console.log(1);
+}
+
+function foo(){
+	console.log(2);
+}
+
+foo();
+
+
+
+var json1 = {"a":"李鹏","arr1":[1,2,3]}
+function copy(obj1) {
+　　　　var obj2 = {};
+　　　　for (var i in obj1) {
+　　　　　　obj2[i] = obj1[i];
+　　　　}
+　　　　return obj2;
+}
+var json2 = copy(json1);
+json1.arr1.push(4);
+
+//alert(json1.arr1);  //1234
+//alert(json2.arr1)  //1234
+
+var json1={
+	"name":"鹏哥",
+	"age":18,
+	arr1:[1,2,3]
+};
+var json2={};
+function copy(obj1,obj2){
+  var obj2=obj2||{}; 
+  for(var name in obj1){
+
+    if(typeof obj1[name] === "object"){ 
+      obj2[name]= (obj1[name].constructor===Array)?[]:{}; 
+      copy(obj1[name],obj2[name]); 
+    }else{
+      obj2[name]=obj1[name];  
+    }
+  }
+  return obj2; 
+}
+json2=copy(json1,json2)
+json1.arr1.push(4);
+alert(json1.arr1);  //123456
+alert(json2.arr1);  //12345
+
+
+</script>
+	
+</body>
+</html>
+

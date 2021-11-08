@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0;padding;0}
+		.container{
+			display: flex;
+			flex-direction:column;
+			height: 100vh;
+		}
+		header{
+			background: red;
+		}
+		section{
+			background: pink;
+			flex:1;
+			display: flex;
+		}	
+		footer{
+			background: #ccc;
+		}
+		.left,.right{
+			background: #000;
+			flex:0 0 200px;
+		}
+		.content{
+			background: orange;
+			flex:1;
+		}
+	</style>
+
+<!--[if IE]>
+<script src=”http://html5shiv.googlecode.com/svn/trunk/html5.js”></script>
+< ![endif]-->
+
+</head>
+<body>
+
+<div class='container'>
+	
+	<header>头部</header>
+	<section>
+		<div class='left'>左</div>
+		<div class='content'>中</div>
+		<div class='right'>右</div>
+	</section>
+	<footer>底部</footer>
+
+</div>
+
+	
+</body>
+</html>

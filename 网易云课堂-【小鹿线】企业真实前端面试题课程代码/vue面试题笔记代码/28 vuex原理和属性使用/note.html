@@ -1,0 +1,8 @@
+一、vuex原理
+
+	1. vuex其实是一个vue的插件，高度依赖vue.js
+	2. vue插件都需要一个install方法，
+	   install方法调用了applyMixin，该方法主要是在所有组件中的beforeCreate中注入了this.$store对象。
+	3. vue 自身的响应式设计，依赖监听、依赖收集都属于 vue 对象 Property set get 方法的代理劫持。
+
+二、State、 Getter、Mutation 、Action、 Module

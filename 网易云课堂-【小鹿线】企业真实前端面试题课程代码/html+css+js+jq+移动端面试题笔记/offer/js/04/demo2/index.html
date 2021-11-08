@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+function fn(){
+	this.name="张三"
+	this.run=function(){
+		return 111
+	}
+} 
+fn.prototype.name="李四";
+fn.prototype.run=function(){
+	return 222;
+}
+
+var obj = new fn();
+
+console.log(obj.name,obj.run())
+
+
+</script>	
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<input type="" name="" id='inp'>
+<div id='oDiv'></div>
+
+<script type="text/javascript">
+// let obj = {a:1};
+// console.log(obj);
+
+let obj = {};
+Object.defineProperty(obj,'name',{
+	get(val){
+		//获取
+		console.log("你读了");
+		return val;
+	},
+	set(val){
+		inp.value=val;
+		oDiv.innerHTML = val;
+	}
+})
+
+inp.addEventListener("input",function(e){
+	obj.name=e.target.value;
+})
+
+obj.name = '三人行慕课';
+
+
+
+
+</script>
+
+</body>
+</html>

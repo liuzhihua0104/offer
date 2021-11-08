@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+
+var url = 'https://www.baidu.com/s?ie=utf-8&f=8&inputT=211&rsv_sug4=211';
+
+function parseQueryString(url){
+
+	var obj = {};
+	var str = url.split("?")[1];
+	var temp = str.split("&");
+	for(var i=0;i<temp.length;i++){
+		var arr = temp[i].split("=");
+
+		obj[arr[0]] = arr[1];
+
+	}
+	return obj;
+
+}
+console.log(
+	parseQueryString(url)
+)
+
+
+</script>
+	
+</body>
+</html>

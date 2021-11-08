@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+<script>
+//变量  > 函数  > 参数 > 提升
+
+
+
+function fn(bar){
+
+
+	var bar = 1;
+
+	function bar(){
+		return '函数1';
+	}
+
+	console.log(bar);
+
+
+	function bar(){
+		return '函数2';
+	}
+
+	
+
+}
+
+fn(5);
+
+	
+
+</script>
+
+</body>
+</html>

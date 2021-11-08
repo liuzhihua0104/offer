@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+//js没有块级作用域、
+var name = 'hello';
+(function(){
+
+	if(typeof name ==='undefined'){
+
+		var name = 'jack';
+
+		console.log("true"+name);
+
+	}else{
+		console.log('false'+name);
+	}
+
+})()
+</script>
+	
+</body>
+</html>

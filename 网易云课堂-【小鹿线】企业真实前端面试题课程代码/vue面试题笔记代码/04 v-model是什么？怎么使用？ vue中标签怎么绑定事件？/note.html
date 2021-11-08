@@ -1,0 +1,17 @@
+一、v-model的使用
+
+	可以实现双向绑定。 在input或者select或者文本域配合value使用
+
+二、vue中的标签如何绑定事件
+	
+	v-on:click   简写  @click
+
+	绑定事件：<input @click=doLog() />
+
+	在移动端click有300ms延迟的问题，解决这个问题可以引入fastClick
+
+	1>下载
+		npm install fastclick
+	2>引入
+		import FastClick from 'fastclick'
+		FastClick.attach(document.body);

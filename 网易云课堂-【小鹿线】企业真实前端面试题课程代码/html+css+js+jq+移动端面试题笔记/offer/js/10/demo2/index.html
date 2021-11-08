@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<img src="1.png" alt="" id='img'>
+
+<script>
+var img = document.getElementById("img");
+var timer = setInterval(function(){
+
+	if(img.complete){
+		clearInterval(timer);
+		alert("加载完毕了")
+	}
+
+},10)
+
+</script>
+	
+</body>
+</html>

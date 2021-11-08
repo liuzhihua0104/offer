@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<ul>
+	<li>1</li>
+	<li>2</li>
+	<li>3</li>
+</ul>
+
+<script>
+//异步 、 闭包
+for(var i=0;i<3;i++){
+
+	setTimeout(function(){
+
+		alert(i);
+
+	},1000*i)
+}
+
+// var lis = document.getElementsByTagName("li");
+// for(var i=0;i<lis.length;i++){
+
+// 	lis[i].index= i;
+// 	lis[i].onclick = function(){
+
+// 		alert(this.index);
+
+// 	}
+// }
+
+
+</script>
+
+</body>
+</html>

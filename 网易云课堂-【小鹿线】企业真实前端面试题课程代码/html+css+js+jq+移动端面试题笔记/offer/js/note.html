@@ -1,0 +1,156 @@
+1》typeof类型
+
+	typeof NaN  ==> number
+	typeof null ==> object
+	typeof undefined ==>undefined
+
+2》作用域、变量提升性
+
+	作用域:先在内部找，如果内部找不到，向外查找
+
+优先级：
+		变量  > 普通函数  > 参数 > 提升
+
+3》es6中使用new Set()去重
+
+	问题：同值不同类型，不能去除
+
+4》浅拷贝、深拷贝
+
+
+	浅拷贝：拷贝对象属性
+		   问题：一个改变，互相影响
+
+	深拷贝：拷贝源对象
+           解决：一个改变，互相不影响
+
+
+5》判断一个东西是否 是数组
+
+	instanceof
+
+	[].__proto__.constructor==Array
+
+
+6》数组方法 ： pop 、push 、 unshift 、shift
+
+
+	push    :向数组末尾添加内容、返回数组长度
+	unshift :向数组第一位添加内容、返回数组长度
+
+	pop     :删除数组末尾、返回删除谁
+	shift   :删除数组第一位、返回删除谁
+
+7》dom操作
+	
+	添加：appendChild
+	移除：removeChild
+	移动：replaceChild
+	插入：insertBefore
+	复制：clone
+	创建：createElement
+	查找节点：getElementById
+
+8》阻止冒泡和默认行为
+
+	阻止冒泡：
+
+		if(e.stopPropagation){
+			e.stopPropagation();
+		}else{
+			e.cancelBubble = true;
+		}
+
+	默认行为：
+		
+		if(e.preventDefault){
+			e.preventDefault()
+		}else{
+			e.returnValue=false
+		}
+
+9》new操作符具体做了什么?
+	
+	1》创建对象
+	2》赋值操作 （给予属性或者方法）
+	3》this指向 (函数.call(对象))
+
+10>js中的延迟加载
+
+	<script src='a.js' async></script>
+	<script src='a.js' defer='defer'></script>
+
+	
+11>use strict
+
+	是什么===》严格模式(解决一些js的怪癖行为的)
+	好处  ===》检测代码的，压缩的节约文件大小
+	坏处  ===》阻塞后面代码的运行，压缩出现错误
+
+12>js创建对象的方式
+
+	
+	1> {} | new Object()
+	2> 构造函数new 
+	3> Object.create()
+	
+13>判断图片加载完成
+
+	complete属性
+
+14>事件委托
+
+	var e = window.event || e;
+	var tar = e.target || e.srcElement;
+
+15>let和const区别
+
+	const声明必须赋值
+	const不可变化的量（常量）
+
+16>cookie、localStorage、sessionStorage区别
+
+
+	1》存储大小不同
+
+		cookie不能超过4k
+
+		localStorage、sessionStorage：5m或者更多
+	
+	2》数据有效期
+		
+		cookie可以设置生命周期
+		
+		localStorage 一直保持，手动清除
+		
+		sessionStorage 关闭页面或者浏览器就清除了
+
+	3》作用域不同
+
+		sessionStorage ==〉只能在当前页面有效
+
+		localStorage、cookie ： 不同页面也会存在
+
+	4》Web storage 支持事件通知机制、可以更新数据时发送给事件监听者
+
+
+17>把arguments转换为真正的数组
+
+	Array.from
+	
+
+18>call、apply、bind区别
+
+	bind==》返回函数
+	call==》 函数.call(null,1,2,3,4)
+	apply==》函数.call(null,[1,2,3,4])
+
+
+
+
+
+
+
+
+
+

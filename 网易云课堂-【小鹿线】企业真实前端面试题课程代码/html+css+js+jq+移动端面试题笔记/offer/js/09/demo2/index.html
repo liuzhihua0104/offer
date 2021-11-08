@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+var str = 'aabbcccc';
+var obj = {};
+for(var i=0;i<str.length;i++){
+
+	var chart = str.charAt(i);
+
+	if(obj[chart]){
+		obj[chart]++;
+	}else{
+		obj[chart]=1;
+	}
+}
+var max = 0; //次数
+var maxChart = null;//字符 
+
+for(var k in obj){
+
+	if(max<obj[k]){
+		max=obj[k];
+		maxChart=k;
+	}
+
+}
+console.log("出现最多"+max);
+console.log('谁出现最多?===>'+maxChart)
+
+
+
+
+</script>
+	
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<input type="text"><strong></strong>	
+
+<script>
+var input = document.getElementsByTagName("input")[0];
+input.oninput = function(){
+
+
+	var reg = /^[\w-]{3,12}@[\da-zA-Z]{2,6}\.[da-zA-Z]+$/;
+
+	if(reg.test(this.value)){
+
+		this.nextElementSibling.innerHTML='格式正确';
+	}else{
+		this.nextElementSibling.innerHTML='请输入正确的邮箱格式';
+	}
+
+}
+</script>
+
+</body>
+</html>

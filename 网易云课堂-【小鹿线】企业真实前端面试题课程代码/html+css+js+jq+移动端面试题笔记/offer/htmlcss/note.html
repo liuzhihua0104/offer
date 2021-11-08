@@ -1,0 +1,157 @@
+1》清除浮动
+
+	a>添加一个盒子，加入clear:both
+	
+		缺点：多了一个div盒子
+
+	b>给父元素加入：overflow: hidden;
+
+	c>最常用一种方式（after）
+
+		格式：
+			.main:after{
+				content: " ";
+				clear: both;
+				display: table;
+			}
+2》行内，块，空
+
+	行内: a  b  span  input..
+	块: div  ul  li p h1 dl...
+	空: br hr ...
+
+3》盒子模型
+	
+	margin-->border-->padding-->content
+
+4》css选择符有哪些
+
+	
+	id   #
+	class .
+	标签   div p 
+	相邻   ul+div
+	子     ul>li
+	后     ul li
+	通配   *
+	属性   a[href='xxx']
+	伪类   a:after  a:hover
+
+5》css中哪些可以继承
+
+	color 、 font-size
+
+6》优先级算法如何计算
+
+	!important > 行内 > div > class > tag
+	
+7》css3中新增伪类
+
+	element:first-of-type: 父元素中第一个element元素
+
+	element:last-of-type: 父元素中最后一个element元素
+
+	element:only-of-type: 父元素中唯一一个element元素
+
+	element: :nth-of-type(n): 父元素中第n个element类型的element
+
+	element:nth-last-of-type(n): 父元素中倒数第n个element类型的element
+
+
+	element:only-child: 父元素中只有一个子元素，且该子元素为element的element
+
+	element:last-child: 父元素中最后一个子元素，且该子元素为element的element
+
+	element:nth-child(n): 父元素中第n个子元素是element的element
+
+	element:nth-last-child(n) 父元素中倒数第n个子元素是element的element
+
+
+	:root 选择文本的根元素
+
+	element:empty 没有子元素的element元素
+
+	element:enable 选择每个已启动的元素
+
+	element:disable 选择每个已禁止的元素
+
+	element:chacked 选择每个被选中的元素
+
+	element:target 选择当前活动的元素
+
+8》浏览器内核分别是什么？
+
+	Trident：ie/360/搜狗浏览器
+	Geoko  : ff
+	Presto ：opera
+	Webkit ：谷歌,safari
+	
+	浏览器的兼容：
+			1》解决浏览器默认内外边距不一致问题
+
+			  *{margin:0;padding:0}
+
+			2》
+
+9》html5有什么新特性
+	
+	a>添加了canvas==》画图
+	b>新增语法化标签
+	c>本地存储
+	d>表单控件
+
+10》如何处理html5标签的浏览器兼容问题
+	
+	<header></header>
+	<footer></footer>
+	
+	ie低级版本浏览器是不支持的,6,7,8
+
+	1》支持document.createElement()
+	
+		****默认样式需要自己写
+
+	2》html5shiv :推荐
+
+11》关闭ios键盘首字母大写
+
+	autocapitalize="off"
+
+12》html标签
+
+	文字加粗：strong
+	下标：sub
+	上标：sup
+	居中：center
+	字体：font
+13》Doctype作用,有几种Doctype类型
+
+	a>Doctype位于文档最前面，处于html标签之前的，告诉浏览器文档使用哪种html或者xhtml
+	
+	b>Doctype类型
+
+		1>严格版本
+		2>过滤版本
+		3>基于框架html版本
+
+14》iframe
+
+	优点：
+		1》可以重复调用
+		2》重载页面，不需要加载整个页面
+		3》维护性好一点（修改简单）
+	缺点：
+		1》兼容性不是那么好
+		2》浏览器后退按钮无效
+		3》会阻塞页面onload事件
+		4》多框架页面==〉会增加很多的http请求
+
+15》div+css较table有什么优点
+
+	1>布局灵活
+	2>修改比较方便
+	3>seo
+
+
+
+

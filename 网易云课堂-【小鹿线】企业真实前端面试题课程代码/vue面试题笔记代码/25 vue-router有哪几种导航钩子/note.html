@@ -1,0 +1,37 @@
+vue-router有哪几种导航钩子
+
+  三种：
+
+  	一、全局导航钩子 （2个）
+
+  		beforeEach((to,from,next)=>{
+
+  		})
+
+  		afterEach((to,from)=>{
+
+  		})
+
+  	二、路由配置中的导航钩子
+
+  		beforeEnter((to,from,next)=>{
+
+  		})
+
+  	三、组件的钩子函数	
+
+  		beforeRouteEnter
+  		beforeRouteUpate
+  		beforeRouteLeave
+
+
+
+*******
+to : 即将要进入的目标路由对象
+from ：当前导航正要离开的路由
+next() : 如果一切正常，则调用这个方法进入下一个钩子
+next(false) ： 去掉导航
+next('/login') ： 跳转到对应的路由
+next(error)	：执行一个error实例
+
+
