@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.main1 {
+				border: 1px solid red;
+			}
+
+			.main1>.div1,
+			.main1>.div2,
+			.main1>.div3 {
+				width: 100px;
+				height: 100px;
+				border: 1px solid yellow;
+				float: left;
+				background: #000;
+			}
+
+			.clear {
+				clear: both;
+			}
+
+			/* ================================================= */
+			.main2 {
+				border: 1px solid red;
+				margin: 100px 0;
+				overflow: hidden;
+			}
+
+			.main2>.div1,
+			.main2>.div2,
+			.main2>.div3 {
+				width: 100px;
+				height: 100px;
+				border: 1px solid yellow;
+				float: left;
+				background: #000;
+			}
+
+			/* ================================= */
+			.main3 {
+				border: 1px solid red;
+				margin: 100px 0;
+			}
+
+			.main3:after {
+				content: "";
+				clear: both;
+				display: table;
+			}
+
+			.main3>.div1,
+			.main3>.div2,
+			.main3>.div3 {
+				width: 100px;
+				height: 100px;
+				border: 1px solid yellow;
+				float: left;
+				background: #000;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 清除浮动1 ,缺点多了一个盒子-->
+		<div class="main1">
+			<div class="div1"></div>
+			<div class="div2"></div>
+			<div class="div3"></div>
+			<div class="clear"></div>
+		</div>
+
+		<!-- 清除浮动2,给父元素overflow-hidden-->
+		<div class="main2">
+			<div class="div1"></div>
+			<div class="div2"></div>
+			<div class="div3"></div>
+		</div>
+
+		<!-- 添加伪元素 -->
+		<div class="main3">
+			<div class="div1"></div>
+			<div class="div2"></div>
+			<div class="div3"></div>
+		</div>
+	</body>
+</html>
+
+<script>
+let  a=new Map();
+a.set("aa",123456);
+console.log(a.get("12"))
+
+
+</script>
