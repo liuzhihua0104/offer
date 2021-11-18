@@ -69,7 +69,7 @@ body {
                     background: url(../images/map.png) no-repeat center center;
                     background-size: 5.18rem 5.18rem;
                     opacity: 0.3;
-                    
+
                 }
 
                 .map2 {
@@ -79,6 +79,7 @@ body {
                     background: url(../images/lbx.png) no-repeat center center;
                     background-size: 6.43rem 6.43rem;
                     opacity: 0.6;
+                    animation: rotate1 15s linear infinite;
                 }
 
                 .map3 {
@@ -87,11 +88,34 @@ body {
                     height: 100%;
                     background: url(../images/jt.png) no-repeat center center;
                     background-size: 5.66rem 5.66rem;
-                    opacity: 0.3;
+                    opacity: 0.6;
+                    animation: rotate2 10s linear infinite;
                 }
+
             }
 
         }
 
+    }
+}
+
+@keyframes rotate1 {
+    from {
+        transform: rotate(0deg); //只能有一个transform,如果上面样式中写了transform样式，需要在这里再写一份
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+@keyframes rotate2 {
+    from {
+        transform: rotate(360deg); //只能有一个transform,如果上面样式中写了transform样式，需要在这里再写一份
+    }
+
+    to {
+        transform: rotate(0deg);
     }
 }
