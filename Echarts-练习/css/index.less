@@ -8,6 +8,7 @@ html,
 body {
     width: 100%;
     height: 100%;
+    background: red;
 }
 
 .wrap {
@@ -23,7 +24,8 @@ body {
     .header {
         height: 1rem;
         width: 100%;
-        background: #fafafa;
+        font-size: 0.4rem;
+        color: #fafafa;
     }
 
     .main-box {
@@ -61,6 +63,7 @@ body {
                 width: 100%;
                 flex: 1;
                 position: relative;
+                overflow: hidden;
 
                 .map1 {
                     position: absolute;
@@ -90,6 +93,12 @@ body {
                     background-size: 5.66rem 5.66rem;
                     opacity: 0.6;
                     animation: rotate2 10s linear infinite;
+                }
+
+                .chart {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
                 }
 
             }

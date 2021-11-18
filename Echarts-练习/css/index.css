@@ -7,6 +7,7 @@ html,
 body {
   width: 100%;
   height: 100%;
+  background: red;
 }
 .wrap {
   width: 100%;
@@ -20,7 +21,8 @@ body {
 .wrap .header {
   height: 1rem;
   width: 100%;
-  background: #fafafa;
+  font-size: 0.4rem;
+  color: #fafafa;
 }
 .wrap .main-box {
   flex: 1;
@@ -54,6 +56,7 @@ body {
   width: 100%;
   flex: 1;
   position: relative;
+  overflow: hidden;
 }
 .wrap .main-box .center .map .map1 {
   position: absolute;
@@ -80,6 +83,11 @@ body {
   background-size: 5.66rem 5.66rem;
   opacity: 0.6;
   animation: rotate2 10s linear infinite;
+}
+.wrap .main-box .center .map .chart {
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 @keyframes rotate1 {
   from {
