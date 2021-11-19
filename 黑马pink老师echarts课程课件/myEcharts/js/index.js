@@ -77,7 +77,7 @@
         data: [200, 300, 300, 900, 1500, 1200, 600],
         itemStyle: {
           // 修改柱子圆角
-          barBorderRadius: 5
+          barBorderRadius: 100
         }
       }
     ]
