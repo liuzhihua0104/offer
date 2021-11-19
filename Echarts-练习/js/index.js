@@ -68,6 +68,10 @@
         }
     };
     myChart.setOption(option);
+    window.onresize = function() {
+        myChart.resize();
+      };
+
 
 
 })();
