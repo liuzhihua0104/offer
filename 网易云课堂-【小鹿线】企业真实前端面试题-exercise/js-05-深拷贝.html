@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	// 4》浅拷贝、深拷贝
+
+	// 基本类型： string,number,boolean,null,undefined
+	// 栈内存主要用于存储各种基本类型的变量（简称“基站”）
+
+
+	// 引用类型： Function,Array,Object------技术对象系列，typeof()这个三种类型得到的都是object
+	// 而堆内存主要负责像对象Object这种变量类型的存储
+
+
+	// 	浅拷贝：拷贝对象属性
+	// 		   问题：一个改变，互相影响
+
+	var obj1 = {
+		age: 18,
+		arr: [1, 2, 3]
+	}
+
+	var obj2 = {};
+
+	function copy(obj1, obj2) {
+		for (var key in obj1) {
+			if (typeof obj1[key] == "object") {
+				if (obj1[key].constructor == Array) {
+					console.log(123)
+					obj2[key] = [];
+				} else {
+					obj2[key] = {}
+				}
+
+				copy(obj1[key], obj2[key])
+
+
+			} else {
+				obj2[key] = obj1[key]
+			}
+
+		}
+		return obj2
+	}
+
+
+	copy(obj1, obj2)
+	console.log(obj2)
+	
+	// instanceof 的作用是判断实例对象是否为构造函数的实例，实际上判断的是实例对象的__proto__属性与构造函数的prototype属性是否指向同一引用；
+	
+	// constructor 的作用是返回实例的构造函数，即返回创建此对象的函数的引用。
+
+	// typeof检测数据类型，返回一个小写字母的类型字符串，只需要一个操作数，简单数据类型或者函数或者对象
+
+	console.log(typeof null) //object
+
+	// instanceof检测对象之间的关联性，表示什么什么的实例,不可以检测简单数据类型
+	//  typeof用以获取一个变量或者表达式的类型，typeof一般只能返回如下几个结果：typeof只知道是对象类型，但是不知道是什么类型的对象，instanceof起到一个补充的作用
+
+	// number,boolean,string,function（函数）,object（NULL,数组，对象）,undefined。
+
+
+
+	// 	      typeof        instanceof
+	// 作用   检测数据类型    检测对象之间的关联性
+	// 返回   小写字母字符串  布尔值
+	// 操作数  简单数据类型   左边必须是引用类型
+	//         函数或者对象    右边必须是函数
+	// 操作数量  1个         2个
+
+	console.log({} instanceof Object)
+	
+	// https://www.bilibili.com/video/av66105561/
+	// JavaScript运算符typeof和instanceof的区别 - Web前端工程师面试题讲解
+</script>
