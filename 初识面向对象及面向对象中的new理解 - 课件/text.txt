@@ -10,6 +10,9 @@ onresize 从新定义大小的时候会触发的事件
 除了dom 元素 
 bom里面 new［实例化的］才是obj的
 
+rose例如 var a=new String("123"); typeof a 显示object;
+如果 var a=String("13");typeof a显示 string
+
 Bom  
 实例化之后 this 就指向实例化对象
 没实例化之前 this 永远就指向window
