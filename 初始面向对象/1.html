@@ -8,9 +8,20 @@
 	</body>
 </html>
 <script>
+	var a = function() {
+		return this
+	}
+	console.log(new a())
 
-var a=function(){
-	return this
-}
-console.log(new a())
+
+
+
+	function a() {
+		function b() {
+			this.c = 10
+		}
+		this.a = new b();
+		console.log(this)
+	}
+	console.log(new a().a.c)
 </script>
