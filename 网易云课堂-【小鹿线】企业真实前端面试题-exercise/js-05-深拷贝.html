@@ -31,30 +31,24 @@
 	function copy(obj1, obj2) {
 		for (var key in obj1) {
 			if (typeof obj1[key] == "object") {
-				if (obj1[key].constructor == Array) {
-					console.log(123)
-					obj2[key] = [];
-				} else {
-					obj2[key] = {}
-				}
-
+				obj2[key] = obj1[key].constructor == Array ? [] : {};
 				copy(obj1[key], obj2[key])
-
-
 			} else {
 				obj2[key] = obj1[key]
 			}
-
 		}
-		return obj2
+		return obj2;
 	}
 
 
+
 	copy(obj1, obj2)
+	obj1.arr[0] = "000"
+	console.log(obj1)
 	console.log(obj2)
-	
+
 	// instanceof 的作用是判断实例对象是否为构造函数的实例，实际上判断的是实例对象的__proto__属性与构造函数的prototype属性是否指向同一引用；
-	
+
 	// constructor 的作用是返回实例的构造函数，即返回创建此对象的函数的引用。
 
 	// typeof检测数据类型，返回一个小写字母的类型字符串，只需要一个操作数，简单数据类型或者函数或者对象
@@ -75,8 +69,9 @@
 	//         函数或者对象    右边必须是函数
 	// 操作数量  1个         2个
 
-	console.log({} instanceof Object)
-	
+	console.log({}
+		instanceof Object)
+
 	// https://www.bilibili.com/video/av66105561/
 	// JavaScript运算符typeof和instanceof的区别 - Web前端工程师面试题讲解
 </script>
