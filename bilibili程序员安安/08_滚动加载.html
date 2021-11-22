@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			html {
+				width: 100%;
+				height: 100%;
+			}
+
+			body {
+				width: 100%;
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+			}
+
+			.top,
+			.bottom {
+				height: 80px;
+				width: 100%;
+				background-color: aquamarine;
+			}
+
+			#content {
+				flex: 1;
+				overflow: scroll;
+
+			}
+
+			ul {
+				width: 100%;
+				list-style: none;
+				display: flex;
+				flex-wrap: wrap;
+			}
+
+			li {
+				width: 50%;
+
+
+			}
+
+			img {
+				vertical-align: middle;
+			}
+		</style>
+	</head>
+	<body>
+
+		<div class="top">顶部</div>
+
+		<div id="content">
+
+			<ul id="ul">
+				<li>
+					<img src="https://t7.baidu.com/it/u=3911840071,2534614245&fm=193&f=GIF" />
+				</li>
+				<li>
+					<img src="https://t7.baidu.com/it/u=3911840071,2534614245&fm=193&f=GIF" />
+				</li>
+				<li>
+					<img src="https://t7.baidu.com/it/u=3911840071,2534614245&fm=193&f=GIF" />
+				</li>
+				<li>
+					<img src="https://t7.baidu.com/it/u=3911840071,2534614245&fm=193&f=GIF" />
+				</li>
+				<li>
+					<img src="https://t7.baidu.com/it/u=3911840071,2534614245&fm=193&f=GIF" />
+				</li>
+			</ul>
+
+		</div>
+
+		<div class="bottom">底部</div>
+	</body>
+</html>
+
+
+<script>
+	window.onload = function() {
+		// 封装获取滚动条高度的函数
+		// function getScrollTop() {
+		// 	var scroll_top = 0;
+		// 	if (document.documentElement && document.documentElement.scrollTop) {
+		// 		scroll_top = document.documentElement.scrollTop;
+		// 	} else if (document.body) {
+		// 		scroll_top = document.body.scrollTop;
+		// 	}
+		// 	return scroll_top;
+		// }
+
+
+		getPic();
+
+		document.getElementById("content").onscroll = function(e) {
+			let scrollTop = Math.ceil(e.target.scrollTop); //被滚去的高度,防止是小数			
+			let contentOffsetHeight = e.target.clientHeight; //ul的可视高度
+			let ulOffsetHeight = document.getElementById("ul").offsetHeight;
+			
+			console.log(scrollTop,contentOffsetHeight,ulOffsetHeight)
+
+			if (scrollTop + contentOffsetHeight >= ulOffsetHeight-1000) {
+				getPic();
+				console.log("到底")
+			}else{
+				console.log("未到底")
+			}
+		}
+	}
+
+
+	function getPic() {
+
+		let data = [{
+			img: "https://t7.baidu.com/it/u=3911840071,2534614245&fm=193&f=GIF"
+		}, {
+			img: "https://t7.baidu.com/it/u=3911840071,2534614245&fm=193&f=GIF"
+		}, {
+			img: "https://t7.baidu.com/it/u=3911840071,2534614245&fm=193&f=GIF"
+		}, {
+			img: "https://t7.baidu.com/it/u=3911840071,2534614245&fm=193&f=GIF"
+		}, {
+			img: "https://t7.baidu.com/it/u=3911840071,2534614245&fm=193&f=GIF"
+		}, {
+			img: "https://t7.baidu.com/it/u=3911840071,2534614245&fm=193&f=GIF"
+		}, {
+			img: "https://t7.baidu.com/it/u=3911840071,2534614245&fm=193&f=GIF"
+		}, {
+			img: "https://t7.baidu.com/it/u=3911840071,2534614245&fm=193&f=GIF"
+		}, {
+			img: "https://t7.baidu.com/it/u=3911840071,2534614245&fm=193&f=GIF"
+		}]
+
+
+		let ul = document.getElementById("ul");
+		data.map(function(item, index) {			
+			let li=document.createElement("li");
+			li.innerHTML= '<img src="'+item.img+'" />'
+			ul.appendChild(li)
+		})
+		
+	}
+</script>

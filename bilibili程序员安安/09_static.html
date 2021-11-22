@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+
+
+<script>
+	function Phone() {}
+
+	Phone.name = "rose"
+	Phone.age = function() {
+		console.log(18)
+	}
+
+	Phone.prototype.size = "5.5inch";
+
+	let nokia = new Phone();
+
+	// 实例对象不会有函数的属性，只会有prototype上面的东西
+
+	console.log(nokia.name)
+	console.log(nokia.age)
+	console.log(nokia.size)
+
+	class Pc {
+		// static name = '手机';
+		// static name = "手机";
+		static name = '手机';
+		static change() {
+			console.log("我是static方法");
+		}
+	}
+
+	let newPc = new Pc();
+	console.log(newPc.name);
+	console.log(newPc.change);
+</script>

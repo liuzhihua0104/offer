@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+
+		<input type="text" id="input_id">
+		<p id="p_id"></p>
+	</body>
+</html>
+<script>
+	let obj={}
+
+	Object.defineProperty(obj,"value",{
+		get:function(){
+			console.log("get")
+		},
+		set:function(newValue){
+			console.log(newValue)
+			document.getElementById("input_id").value=newValue;
+			document.getElementById("p_id").innerHTML=newValue;
+		}
+	})
+
+	// 设置值，触发set方法
+	// obj.value=123
+
+
+	// 读取时触发get
+	// console.log(obj.value)
+
+
+	document.addEventListener("keyup",function(e){
+		console.log(e.target.value)
+		// 触发set方法,会将值传入到set方法中
+		obj.value=e.target.value;
+	}) 
+
+
+
+// var obj={}
+
+// Object.defineProperty(obj,"age",{
+// 	set(){
+// 		console.log("set")
+// 	},get(){
+// 		console.log("get")
+// 	}
+// })
+
+</script>
