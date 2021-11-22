@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+
+<script>
+	// var n=123;
+	// function f1(){
+	// 	console.log(n); //123
+	// }
+
+	// function f2(){
+	// 	var n=456;
+	// 	// f1(); //window调用，n用的是window下的n
+	// 	f1(n); //window调用，n用的是window下的n,虽然传了参数n,但是f1函数中没有接收
+	// }
+
+	// f2();
+	// console.log(n) //123
+
+
+	// ===================================
+
+	// var length = 100;
+
+	// function f1() {
+	// 	console.log(this.length)
+	// }
+
+	// var obj = {
+	// 	x: 10,
+	// 	f2: function(f1) {
+	// 		// this =>obj
+	// 		f1(); // 100 无调用者 ，this指向window
+	// 		arguments[0](); //2 无调用者，length是数组的长度
+	// 	}
+	// }
+
+	// obj.f2(f1, 1);
+
+
+	// ========================
+
+	// function f(){
+	// 	console.log(this.a); // hello
+	// }
+
+	// var obj={
+	// 	a:2,
+	// 	f:f
+	// }
+
+	// var f2=obj.f;	
+	// var a="hello";
+	// f2(); // f2无调用者，this=>window 
+
+	// obj.f(); // 2 调用者obj
+
+
+	// =========================================
+
+	function f(s) {
+		// s接收到一个3
+		console.log(this.a, s); // 2,3
+		return this.a + s 
+	}
+
+	var obj = {
+		a: 2
+	}
+
+	var f2 = function() {
+		return f.apply(obj, arguments); //无形参接收 ，用 arguments接收  return f.apply(obj,[3])
+	}
+
+	var b = f2(3)
+	console.log(b)   // 5
+	
+	// ==============================================
+</script>

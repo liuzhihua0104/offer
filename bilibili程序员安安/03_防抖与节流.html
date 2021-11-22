@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+
+		<style>
+			div {
+				width: 100%;
+				height: 200px;
+				background: pink;
+			}
+		</style>
+	</head>
+	<body>
+
+		<!-- <input type="text" onkeydown="fun()"> -->
+		<input type="text" onkeyup="throttle(fun,2000)">
+
+		<div id="div"></div>
+
+	</body>
+</html>
+
+<script>
+	// 防抖：指触发事件后再n秒内函数只执行一次，若在n秒内再次触发则重新计算，在n秒之后调用，则执行
+	// 应用场景：抖动：下拉触底加载下一页
+
+	// 节流：连续发生的事件在n秒内只执行一次函数，不管点击多少次
+	// 应用场景：即时查询，如input触发
+
+
+	// 函数
+
+	let count = 0;
+
+	let div = document.getElementById("div");
+	div.onmousemove = throttle(fun, 2000);
+
+
+
+	function fun() {
+
+		div.innerHTML = ++count;
+		console.log(div.innerHTML)
+	}
+
+
+	// 第一种防抖,用到了闭包，一般是调取另外一个函数，而不是直接写到一起(延迟执行)
+	function debounce(fun, wait) {
+		let timeOut;
+		return function() {
+			//  如果定时器还存在，取消之前的任务
+			if (timeOut) {
+				clearTimeout(timeOut)
+			}
+
+			// 重新设置任务
+			timeOut = setTimeout(function() {
+				fun.apply(this)
+			}, wait)
+		}
+	}
+
+
+
+	// 第二种防抖，第二种方式，上来立即执行，下一次等待执行
+	function debounce(fun, wait) {
+		let timeOut;
+		return function() {
+			if (timeOut) {
+				clearTimeout(timeOut); //取消之前的任务，第二次进来时timeOut=true,flag=false则不会执行fun
+			} //取消之前的任务
+
+			let flag = !timeOut; // 第一次flag的结果总是true（取反），第二次时
+
+			// 增加定时器,防抖，在n秒内触发则重新计算
+			timeOut = setTimeout(function() {
+				timeOut = null;
+			}, wait)
+
+			if (flag) {
+				fun.apply(this); // 如果为真立即执行
+			}
+		}
+	}
+
+
+
+	
+
+
+	// 节流,在固定时间内发送请求，使用定时器，比如移动，无论怎么动，2s内请求一次
+	function throttle(fun, wait) {
+		let timeOut;
+		return function() {
+
+			if (!timeOut) {
+				// 在固定时间会执行定时器的内容，如果timeOut不是为true的情况不会进入到定时器
+				timeOut = setTimeout(() => {
+					fun.apply(this); //this传不传都行
+					timeOut = null;
+				}, wait)
+			}
+		}
+	}
+	
+	
+	
+
+	// 节流，使用时间戳的方式
+	function throttle(fun, wait) {
+		console.log(11)
+		let pre = 0;
+		return function() {
+			let now = new Date();
+			// 时间间隔达到规定的才执行
+			if (now - pre > wait) {
+				fun.apply(this);
+				pre = now;
+			}
+
+		}
+	}
+	
+
+</script>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title></title>
+	</head>
+	<body>
+
+	</body>
+</html>
+<script>
+	// 4》浅拷贝、深拷贝
+	
+	// 基本类型： string,number,boolean,null,undefined
+	// 栈内存主要用于存储各种基本类型的变量（简称“基站”）
+	
+	
+	// 引用类型： Function,Array,Object------技术对象系列，typeof()这个三种类型得到的都是object
+	// 而堆内存主要负责像对象Object这种变量类型的存储
+
+
+	// 	浅拷贝：拷贝对象属性
+	// 		   问题：一个改变，互相影响
+	var obj1 = {
+		age: 18,
+		arr: [1, 2, 3]
+	}
+
+	function copy(obj1) {
+		let obj2 = {}
+		for (var key in obj1) {
+			obj2[key] = obj1[key]
+		}
+		return obj2;
+	}
+
+	let obj2 = copy(obj1);
+	console.log(obj1)
+	console.log(obj2)
+	obj1["age"] = 13456 //不会变
+	obj1.arr[0] = "00000"  //会变，数组是地址引用
+
+	console.log(obj1)
+	console.log(obj2)
+
+	// 	深拷贝：拷贝源对象
+	//  解决：一个改变，互相不影响
+	
+	
+</script>

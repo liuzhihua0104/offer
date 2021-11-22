@@ -1,0 +1,213 @@
+<!doctype html> 
+<html> 
+<head> 
+    <meta charset="utf-8"> 
+    <title></title> 
+    <style type="text/css">
+*{margin: 0;padding: 0;list-style: none;}
+#bigBox{
+	width: 300px;height: 200px;border: 1px solid black;
+	position: relative;
+}
+
+#left,#right{
+	width: 60px;position: absolute;left: 0;
+	z-index:5;
+}
+#left li,#right li{
+	width: 58px;border: 1px solid black;
+	display: block;
+	height: 48px;text-align: center;line-height: 48px;
+	cursor: pointer; 
+	background: white;
+}
+
+#left .active,#right .active{
+	background: black;color: white;
+}
+
+#right{
+	left: 240px;
+}
+#bigImg{
+	width:150px;height: 100%;position: absolute;left: 75px;
+	background: #ccc;
+}
+#bigImg img{
+	width: 100%;height: 100%;float: left;
+}
+#name{
+	width: 100%;height: 20px;background: pink;
+	color: red;line-height: 20px;text-indent: 5px;position: absolute;bottom: 40px;
+}
+#money{
+	width: 100%;height: 20px;background: black;
+	color: white;line-height: 20px;text-indent: 5px;position: absolute;bottom: 20px;
+}
+
+    </style>
+</head>
+<body>
+<input id='next' value='nextPerson' type='button'>
+<input id='btn2' value='交叉' type='button'>
+<input id='btn3' value='同步' type='button'>
+<div id='bigBox'>
+	<ul id='left'>
+		<li class='active'>伊栋栋</li>
+		<li>宋海静</li>
+		<li>李博</li>
+		<li>张东</li>
+
+
+	</ul>
+	<ul id='right'>
+		<li>张东</li>
+		<li>李博</li>
+		<li>宋海静</li>
+		<li class='active'>伊栋栋</li>
+	</ul>
+	<div id='bigImg'>
+		<img src="伊栋栋.jpg">
+	</div>
+
+</div>
+<script type="text/javascript">
+var arr = ['伊栋栋.jpg','宋海靖.jpg','李博.jpg','张东.jpg'];
+var LuIndex = 0;
+var RuIndex = 3;
+var LAllLi = left.children;
+var RAllLi = right.children;
+var allLi = document.getElementsByTagName('li');
+var tongbu = false;
+
+btn2.onclick = function(){
+	if(LuIndex==0)RuIndex=7;
+	if(LuIndex==1)RuIndex=6;
+	if(LuIndex==2)RuIndex=5;
+	if(LuIndex==3)RuIndex=4;
+	tongbu = false;
+}
+btn3.onclick = function(){
+	tongbu = true;
+}
+
+next.onclick = function(){
+
+	if(!tongbu){
+		//0 7
+		//1 6
+		//2 5
+		//3 4
+
+		LuIndex++;
+		RuIndex--;
+
+
+		if(LuIndex == LAllLi.length)LuIndex=0;
+		if(RuIndex == -1)RuIndex = LAllLi.length-1;
+		for(var i = 0;i < LAllLi.length;i++){
+			LAllLi[i].className = '';
+			RAllLi[i].className = '';
+		}
+		bigImg.children[0].src = arr[LuIndex];
+
+		LAllLi[LuIndex].className = 'active';
+		RAllLi[RuIndex].className ='active';
+		bigImg.children[0].src = arr[LuIndex];
+
+	}
+	else{
+		RuIndex = LuIndex;
+		LuIndex++;
+		RuIndex++;
+
+		if(LuIndex == LAllLi.length)LuIndex=0;
+		if(RuIndex == LAllLi.length)RuIndex=0;
+		for(var i = 0;i < LAllLi.length;i++){
+			LAllLi[i].className = '';
+			RAllLi[i].className = '';
+		}
+
+
+		LAllLi[LuIndex].className = 'active';
+		RAllLi[RuIndex].className ='active';
+		bigImg.children[0].src = arr[LuIndex];
+		bigImg.children[0].src = arr[LuIndex];
+
+	}
+	
+};
+
+for(var i = 0;i < allLi.length;i++){
+	allLi[i].index = i;
+	allLi[i].onclick = function(){
+		//alert(this.innerHTML)
+
+		if(!tongbu){
+
+			for(var i = 0;i < allLi.length;i++){
+
+			allLi[i].className = '';
+			if(allLi[i].innerHTML == this.innerHTML){
+					if(i<4){
+
+						LuIndex = i;
+						
+					}
+					else{
+						RuIndex = i-4;
+
+					}
+					allLi[i].className = 'active';
+					bigImg.children[0].src = arr[LuIndex];
+					//alert(allLi[i].index)
+				}
+			}
+		}
+		else{
+			for(var i = 0;i < allLi.length;i++){
+				allLi[i].className = '';
+			}
+			if(this.index<4){
+				LuIndex = this.index;
+				RuIndex = LuIndex;
+			}
+			else{
+				RuIndex = this.index-4;
+				LuIndex = RuIndex;
+			}
+
+			LAllLi[LuIndex].className = 'active';
+			RAllLi[RuIndex].className = 'active';
+			bigImg.children[0].src = arr[LuIndex];
+			/*
+			if(allLi[i].innerHTML == this.innerHTML){
+					if(i<4){
+						console.log(i);
+						LuIndex = i;
+						RuIndex = LuIndex;
+					}
+					else{
+						
+						RuIndex = i-4;
+						LuIndex = RuIndex;
+					}
+
+					//allLi[i].className = 'active';
+					//alert(allLi[i].index)
+				}
+
+			}
+			*/
+
+			
+			//console.log(LuIndex)
+			//		console.log(RuIndex);
+
+		
+		}
+	}
+}
+</script>
+</body>
+</html>

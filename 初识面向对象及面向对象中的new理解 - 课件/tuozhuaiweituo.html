@@ -1,0 +1,38 @@
+<!doctype html> 
+<html> 
+<head> 
+    <meta charset="utf-8"> 
+    <title></title> 
+</head>
+<body>
+
+<script type="text/javascript">
+	
+document.body.onmousedown = function(e){
+	var ev = e || event;
+	var iTarget = ev.srcElement || ev.target;
+	if(iTarget.nodeName == 'DIV'){
+		var l = ev.clientX - iTarget.offsetLeft;
+		var t = ev.clientY - iTarget.offsetTop;
+
+		document.onmousemove = function(e){
+			var ev = e ||event;
+			iTarget.style.left = ev.clientX - l +'px';
+			iTarget.style.top = ev.clientY - t + 'px';
+		};
+		document.onmouseup = function(){
+			document.onmousemove = document.onmouseup=null;
+		};
+		return false;
+	};
+};
+
+for(var i = 0;i < 50;i++){
+	var oDiv = document.createElement('div');
+	oDiv.style.cssText = 'width:50px;height:50px;background:red;position:absolute';
+	document.body.appendChild(oDiv);
+}
+
+</script>
+</body>
+</html>

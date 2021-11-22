@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+	</head>
+	<body>
+
+	</body>
+</html>
+
+<script>
+	// var a=10;
+	// function test(){
+	//   a=100;
+	//   console.log(a); //100
+	//   console.log(this.a); //10
+	//   var a; // 预解析,变量提升 
+	//   console.log(a) //100
+	// }
+
+	// test();
+
+	// ==========================
+
+	// (function(){
+	// 	var a=b=3; //相当于全局 b=3;函数内部 var a=b;
+	// })()
+
+	// console.log(a); //报错，是全局内部的
+	// console.log(b); //3,全局，由于上面a报错了，其实b如果在第二行打印不出来
+
+
+	// =============================
+
+	// for (var i = 1; i <= 3; i++) {
+	// 	setTimeout(function() {
+	// 		console.log(i); //输出3个4，
+	// 		// js是单线程，遇到异步任务，会把异步任务放到等待队列，
+	// 		// 继续执行主线程（for执行完毕，var是全局作用于；i=4）
+	// 		// 最后再执行定时器
+
+	// 		// 如果把var  改成let, 则输出123，块级作用域，产生3个块级作用域；
+	// 	}, 0)
+	// }
+
+	// ===============================
+
+	// function fun(n){
+	// 	// var n=undefined; n=n
+	// 	console.log(n); //123
+	// 	var n=456;
+	// 	console.log(n); //456
+	// }
+
+	// var n=123;
+	// fun(n)
+
+	// ============================
+
+
+	// function fun() {
+	// 	console.log(n) //123
+	// 	n = 456;
+	// 	console.log(n) //456
+	// }
+	// var n = 123;
+	// fun(n); // 如果fun()在var n=123 后面,会先执行n=3;再调用函数，
+	// // 如果fun（）在 var n=123 前面，则输出undefined,456
+
+
+	// =============================
+	
+	
+	// function fun() {
+	// 	console.log(fun) // 报错，fun is not a function
+	// 	n = 456;
+	// 	console.log(fun) //不执行，上面报错了
+	// }
+	
+	// var fun=123;
+	// fun();
+	
+	
+	// ==============================
+	
+	// 函数和var 都有变量提升，遇到同名，函数优先!!!!
+	// function fun() {
+	// 	console.log(fun) // 输出函数体
+	// 	fun = 456;
+	// 	console.log(fun) //456
+	// }
+	
+	// fun();
+	// var fun=123;
+	
+	
+	// =================================
+	
+	// var fun=123;
+	// function fun(){
+	// 	console.log(fun); //fun is not a function
+	// 	fun=456;
+	// 	console.log(fun)
+	// }
+	
+	// fun();
+	
+	// // 	执行顺序
+	// // var fun=undefined;
+	// // function fun=function
+	// // fun=123
+	
+	
+	
+	
+	
+	
+</script>

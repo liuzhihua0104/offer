@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>瀑布流</title>
+		<script src="https://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+
+			}
+
+			#main {
+				width: 100%;
+				height: 100%;
+				position: relative;
+			}
+
+			.box {
+				width: 100px;
+				height: auto;
+				position: absolute;
+
+			}
+
+			img {
+				width: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="main">
+			<!-- 		<div class="box">
+				<img src="./images/pubuliu/webp(1)" alt="">
+			</div> -->
+
+	</body>
+</html>
+
+
+<script>
+	$(function() {
+		loadPic();
+
+	})
+
+
+	// 手动获取图片
+	function loadPic() {
+		let picArr = [];
+		for (let i = 1; i <= 80; i++) {
+			picArr.push(i)
+		}
+		let imgItem = [];
+
+
+		// $(".div").eq(0).find("img")[0].onload=function(){
+		// console.log(123)	
+		// }
+
+
+		$.each(picArr, function(index, item) {
+			$("#main").append(`<div class="box">
+				<img src="./images/pubuliu/webp(${item})" alt="" />
+		</div>`)
+		})
+
+		setTimeout(function() {
+			setPic();
+		}, 50)
+	}
+
+
+	function setPic() {
+
+		// 获取图片的宽度
+
+		var box = $(".box");
+		var boxWidth = box.width();
+		var screenWidth = $(window).width();
+
+		// 获取可以放几列
+		var col = parseInt(screenWidth / boxWidth)
+
+		var heightArr = []; //存储每一列的高度
+
+
+		// 遍历所有的box,给box定位
+		$.each(box, function(index, item) {
+
+			// 第一行top都是0						
+			if (index < col) {
+				$(item).css({
+					top: 0,
+					left: index * boxWidth + "px"
+				})
+
+				// 存储四列的高度
+				heightArr.push($(item).find("img").height());
+				// console.log(heightArr)
+			} else {
+
+				// 找到最矮的那一列 $.inArray(value, array)
+				let minHeight = Math.min(...heightArr) //找到数组中最矮的是哪一个值
+				let minHeightIndex = $.inArray(minHeight, heightArr) //找到数组中高度最矮的是哪一个index
+
+				$(item).css({
+					top: heightArr[minHeightIndex] + "px",
+					left: minHeightIndex * boxWidth + "px"
+				})
+
+
+				// 最低的高度加上当前图片的高度为下一次要放的高度
+				heightArr[minHeightIndex] = heightArr[minHeightIndex] + $(item).height();
+				console.log(heightArr)
+
+
+
+
+
+
+			}
+
+
+		})
+
+
+	}
+</script>
