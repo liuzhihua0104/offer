@@ -1,0 +1,35 @@
+<!doctype html> 
+<html> 
+<head> 
+    <meta charset="utf-8"> 
+    <title></title> 
+</head>
+<body>
+
+<script type="text/javascript">
+
+/*
+var a = new Object();
+a.c = function(){
+	alert(this);
+}
+a.c();
+*/
+
+function show(){
+	var a = new Object();
+	a.b = 10;
+	a.c = function(){
+		this.k = 20;
+	};
+	//a.k = 20;
+	a.c();
+	return a;
+};
+//show();//
+//var a = new Object();
+//	a.b = 10;
+alert(show().k)
+</script>
+</body>
+</html>

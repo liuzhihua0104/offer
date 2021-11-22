@@ -1,0 +1,25 @@
+onresize 从新定义大小的时候会触发的事件
+
+面向对象
+所有的操作都是 对 对象的操作
+万物皆是对象
+对象的机制：
+1.引用机制
+2.可以赋予私有属性
+
+除了dom 元素 
+bom里面 new［实例化的］才是obj的
+
+Bom  
+实例化之后 this 就指向实例化对象
+没实例化之前 this 永远就指向window
+
+Dom 
+this 永远指向 发生事件源
+
+如果我不想引用 那么就从新赋值;
+
+new fn  return Object
+
+http://w3schools.bootcss.com/js/default.html
+constructor找到所有东西的原型函数

@@ -1,0 +1,176 @@
+<!doctype html> 
+<html> 
+<head> 
+    <meta charset="utf-8"> 
+    <title></title> 
+    <style type="text/css">
+*{margin: 0;padding: 0;list-style: none;}
+#bigBox{
+	width: 300px;height: 200px;border: 1px solid black;
+	position: relative;
+}
+
+#left,#right{
+	width: 60px;position: absolute;left: 0;top: 8px;left: 2px;
+	z-index:5;
+}
+#left li,#right li{
+	width: 58px;border: 1px solid black;
+	display: block;
+	height: 20px;text-align: center;line-height: 20px;
+	margin-top:3px;cursor: pointer; 
+	background: white;
+}
+
+#left .active,#right .active{
+	background: black;color: white;
+}
+
+#right{
+	left: 240px;
+}
+#bigImg{
+	width:150px;height: 100%;position: absolute;left: 75px;
+	background: #ccc;
+}
+#bigImg img{
+	width: 100%;height: 100%;float: left;
+}
+#name{
+	width: 100%;height: 20px;background: pink;
+	color: red;line-height: 20px;text-indent: 5px;position: absolute;bottom: 40px;
+}
+#money{
+	width: 100%;height: 20px;background: black;
+	color: white;line-height: 20px;text-indent: 5px;position: absolute;bottom: 20px;
+}
+
+    </style>
+</head>
+<body>
+<div id='bigBox'>
+	<ul id='left'>
+		<li class='active'>一</li>
+		<li>二</li>
+		<li>三</li>
+		<li>四</li>
+		<li>五</li>
+		<li>六</li>
+		<li>七</li>
+
+	</ul>
+	<ul id='right'>
+		<li>八</li>
+		<li>九</li>
+		<li>十</li>
+		<li>J</li>
+		<li>Q</li>
+		<li>K</li>
+		<li>🐱</li>
+	</ul>
+	<div id='bigImg'>
+		<img src="img/1.jpg">
+		<div id='name'>连衣裙</div>
+		<div id='money'>1元起</div>
+	</div>
+
+</div>
+<script type="text/javascript">
+	
+	var allLi = document.getElementsByTagName('li');
+
+	//json[i]
+	var needI = 0;
+	var t = null;
+	var boxIndex = 0;
+	var Json = {
+		'连衣裙':'1元起',
+		'超短裤':'5元起',
+		'睡衣':'21元起',
+		'长裤':'3元起',
+		'袜子':'8元起',
+		'帽子':'5.5元起',
+		'丁字裤':'1.2元起',
+		'王超越':'0.2元起',
+		'张瑞希':'0.2元起',
+		'白欣雨':'0.2元起',
+		'拖鞋':'9元起',
+		'球鞋':'12元起',
+		'大裤衩':'55元起',
+		'皮鞋':'109元起'
+	};
+
+	bigBox.onmouseover = function(){
+		clearInterval(t);
+	}
+	bigBox.onmouseout = move;
+	
+	move();
+	function move(){
+		clearInterval(t);
+		t = setInterval(function(){
+			boxIndex++;
+			if(boxIndex == allLi.length)boxIndex = 0;
+			for(var i = 0;i < allLi.length;i++){
+				allLi[i].className = '';
+			}
+			allLi[boxIndex].className = 'active';
+
+			bigImg.children[0].src='img/'+(boxIndex+1)+'.jpg';
+			for(var i in Json){
+					
+					if(needI == boxIndex){
+						//console.log(i);
+
+						document.getElementById('name').innerHTML = i;
+						money.innerHTML = Json[i];
+						//console.log(i + ',' +Json[i]);
+						break;
+					}
+					needI++;
+					//console.log(json[i].length)
+					//var b = this.index;
+					//alert(b);
+					//console.log(i)
+					//console.log(Json[i])
+				}
+				needI=0;
+
+
+		},300);
+	}
+
+	for(var i = 0;i < allLi.length;i++){
+		allLi[i].index = i;
+		allLi[i].onmouseover = function(){
+			for(var i = 0;i < allLi.length;i++){
+				allLi[i].className = '';
+			}
+			this.className = 'active';
+			bigImg.children[0].src='img/'+(this.index+1)+'.jpg';
+			for(var i in Json){
+				
+				if(needI == this.index){
+					//console.log(i);
+
+					document.getElementById('name').innerHTML = i;
+					money.innerHTML = Json[i];
+					//console.log(i + ',' +Json[i]);
+					break;
+				}
+				needI++;
+				//console.log(json[i].length)
+				//var b = this.index;
+				//alert(b);
+				//console.log(i)
+				//console.log(Json[i])
+			}
+			needI=0;
+
+			boxIndex = this.index;
+		}
+	}
+
+</script>
+</body>
+</html>
