@@ -1,0 +1,116 @@
+<!doctype html> 
+<html> 
+<head> 
+    <meta charset="utf-8"> 
+    <title></title> 
+
+    <style type="text/css">
+.m{
+	width: 100px;height: 100px;background: black;float: left;
+}
+
+    </style>
+    <script type="text/javascript" src='jquery-1.9.1.min.js'></script>
+</head>
+<div class='div'></div>
+<div class='div'></div>
+<div class='div' id='div'></div>
+<div class='dfiv'></div>
+<span></span>
+<body>
+<script type="text/javascript">
+//width show hide height css
+function Jquery(obj){
+	this.ele = obj.charAt(0);
+	this.arr = [];
+	switch(this.ele){
+		case '.' :
+		var all = document.getElementsByTagName('*');
+		for(var i = 0;i < all.length;i++){
+			if(all[i].className.indexOf(obj.substring(1))!=-1){
+				this.arr.push(all[i]);
+			}
+		}
+		break;
+		case '#' :
+		//alert(1);
+		//#div
+		//div
+		this.arr.push(document.getElementById(obj.substring(1)));
+		//console.log(this.arr);
+		break;
+		default:
+
+		var all = document.getElementsByTagName(obj);
+		for(var i = 0;i < all.length;i++){
+			this.arr.push(all[i]);
+		}
+		break;
+	}
+};
+Jquery.prototype = {
+	'addClass':function(s){
+		for(var i = 0;i < this.arr.length;i++){
+			this.arr[i].className = s;
+		}
+
+		return this;
+	},
+	'width':function(s){
+		for(var i = 0;i < this.arr.length;i++){
+			this.arr[i].style.width = /px$/.test(s)?s:s+='px';
+		};
+		return this;
+		
+		//px 
+		//for(var i = 0;i <)
+	},
+	'css':function(){
+		this.indexNum = 0;
+		if(arguments.length == 2){//width , 200
+
+			for(var i = 0;i < this.arr.length;i++){
+				this.arr[i]['style'][arguments[0]] =  /px$/.test(arguments[1])?arguments[1]:arguments[1]+='px';
+			}
+
+		}
+		if(arguments.length == 1){//json
+
+			for(var i = 0; i < this.arr.length;i++){
+
+				for(var j in arguments[0]){
+					
+					this.arr[i]['style'][j] = /px$/.test(arguments[0][j])?arguments[0][j]:arguments[0][j]+='px';
+					
+				}
+			}
+
+			return this;
+			/*
+			for(var i in arguments[0]){
+				this.arr[this.indexNum]['style'][i] = /px$/.test(arguments[0][i])?arguments[0][i]:arguments[0][i]+='px';
+				this.indexNum++;
+				
+			}
+			*/
+		}
+	}
+}
+
+function $(string){
+	return new Jquery(string);
+};
+
+
+$('div').css({
+	'width':'200px',
+	'height':'300px'
+}).width(300);
+//number string
+//#
+//.
+//标签
+
+</script>
+</body>
+</html>

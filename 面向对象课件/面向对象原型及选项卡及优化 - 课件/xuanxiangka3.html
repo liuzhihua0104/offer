@@ -1,0 +1,72 @@
+<!doctype html> 
+<html> 
+<head> 
+    <meta charset="utf-8"> 
+    <title></title>
+    <style type="text/css">
+#tab .active{background: #ccc;}
+#tab div{
+	width: 300px;height: 300px;
+	background: #ccc;border: 1px solid black;display: none;
+}
+
+    </style> 
+</head>
+<body>
+<div id='tab'>
+	<input type='button' value='hehe' class='active'>
+	<input type='button' value='haha'>
+	<input type='button' value='hen'>
+	<div style='display:block'>sadkj</div>
+	<div>asjdklajsdlaksd</div>
+	<div>adkasdj;ajsda</div>
+</div>
+<script type="text/javascript">
+	
+
+	function TabNode(node){
+
+		var _this = this;
+
+		//声明的东西
+		this.varNode(node);
+
+		//Event基础事件
+		this.tabEvent(_this);
+		
+
+	};
+	TabNode.prototype = {
+		'varNode':function(node){
+		//	console.log(node);
+			this.allInput = node.Node.getElementsByTagName('input');
+			this.allDiv = node.Node.getElementsByTagName('div');
+		},
+		'tabEvent':function(_this){
+			for(var i = 0;i < this.allInput.length;i++){
+				this.allInput[i].index = i;
+				this.allInput[i].onclick = function(){
+
+				//console.log(_this);
+				
+				for(var i = 0;i < _this.allInput.length;i++){
+					_this.allInput[i].className = '';
+					_this.allDiv[i].style.display = 'none';
+				}
+				
+				this.className = 'active';
+				_this.allDiv[this.index].style.display = 'block';
+			}
+		}
+		}
+
+	}
+	
+
+	new TabNode({
+		Node:document.getElementById('tab')
+	})
+
+</script>
+</body>
+</html>

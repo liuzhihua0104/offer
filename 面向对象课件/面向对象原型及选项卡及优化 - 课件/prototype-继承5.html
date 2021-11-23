@@ -1,0 +1,57 @@
+<!doctype html> 
+<html> 
+<head> 
+    <meta charset="utf-8"> 
+    <title></title> 
+</head>
+<body>
+<script type="text/javascript">
+	
+/*
+function fff(){
+	alert(1);
+};
+window.onclick = fff();
+*/
+
+function a(){
+	this.kkk =10;
+	//this.c();
+	//this.c();
+	//this.m = 20;
+	//var _this = this;
+	//this.f = _this.c;
+	//alert(this.f);
+	//this.f();
+};
+function b(){
+	this.mmm =10;
+	//alert(1)
+	//a.call(this);
+	//this.f();
+};
+
+a.prototype={
+	'a':function(){
+		alert(1);
+	},
+	'b':function(){
+		alert(2);
+	},
+	'c':function(){
+		alert(3);
+	}
+};
+
+for(var i in a.prototype){
+	b.prototype[i] = a.prototype[i];
+	//b.prototype.a = a.prototype.a
+	//b.prototype.b = a.prototype.b
+	//b.prototype.c = a.prototype.c
+}
+//b.prototype.f = a.prototype.c;
+new b().a();
+
+</script>
+</body>
+</html>

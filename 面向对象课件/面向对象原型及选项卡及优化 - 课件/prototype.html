@@ -1,0 +1,54 @@
+<!doctype html> 
+<html> 
+<head> 
+    <meta charset="utf-8"> 
+    <title></title> 
+</head>
+<body>
+<script type="text/javascript">
+	
+	//'asdads' -> String
+	//['1','2',1] -> Array
+	//function c(){} Function
+
+	String.prototype.zhangruixi = function(){
+		//alert('wangyuechao');
+		alert(this);
+	};
+
+	Array.prototype.zhangrui = function(){
+		//alert('pengyan');
+		//alert(this)
+		return this.slice(1,2);
+	};
+
+
+	Function.prototype.zhangruixi = function(){
+		return 10;
+	};
+
+	Object.prototype.k = function(){
+		alert(10);
+	};
+	//''.k();
+	//{}.k();
+	//true.k();
+	//null.k();
+	//1.k();
+	//var a = 1;
+	//a.k();
+	//false.k();
+	//var a = {};
+	//a.k();
+	//var a = null;
+	//a.k();
+	//	alert(setTimeout.zhangruixi());
+	//alert(alert.constructor)
+	//alert.zhangruixi()
+
+	//alert([1,2,3].zhangrui());
+
+	//'asda'.zhangruixi();
+</script>
+</body>
+</html>

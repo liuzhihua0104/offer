@@ -1,0 +1,46 @@
+call apply改变this的指向
+call 从第二个开始就是参数 有无限个
+apply 只有2个参数 第二个必须是对象
+
+
+prototype 原型链
+给原型加数据类型
+给一个名字 
+给一个{}
+
+constructor 看原型
+
+Function 
+String
+Array
+Number
+Boolean
+
+Object 最大的对象
+
+所有的原型都可以放原型链
+原型链里的方法 支持 原型上的所有的私有属性
+原型链的方法也可以当做其私有属性去用
+
+
+call / apply 
+拿不到 prototype 这个私有方法／属性 
+1种
+b.prototype = a.prototype; 
+2种
+for in
+3种
+b.prototype = new a();
+ 
+
+插件 就是让人家用着方便 自己开发比较麻烦
+
+写插件尽量使用MVC的思想
+
+M : Module
+V : View
+C : Controller
+
+不使用 var  使用this
+
+性能测试 用new Date().getTime();

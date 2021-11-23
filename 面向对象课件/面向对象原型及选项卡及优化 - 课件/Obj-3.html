@@ -1,0 +1,25 @@
+<!doctype html> 
+<html> 
+<head> 
+    <meta charset="utf-8"> 
+    <title></title> 
+</head>
+<body>
+<script type="text/javascript">
+	
+function a(){
+	this.f = 10;
+	//this.l();
+	alert(this.lll);
+}
+a.prototype = {
+	'l':function(){
+		alert(1);
+	},
+	'lll':[1,2,3]
+}
+new a();
+
+</script>
+</body>
+</html>

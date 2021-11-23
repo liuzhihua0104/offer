@@ -1,0 +1,140 @@
+<!doctype html> 
+<html> 
+<head> 
+    <meta charset="utf-8"> 
+    <title></title>
+    <style type="text/css">
+#tab{float: left;}
+#tab .active{background: #ccc;}
+#tab div{
+	width: 300px;height: 300px;
+	background: #ccc;border: 1px solid black;display: none;
+}
+
+#tab2 .active{background: #ccc;}
+#tab2 div{
+	width: 300px;height: 300px;
+	background: #ccc;border: 1px solid black;display: none;
+}
+
+    </style> 
+</head>
+<body>
+<div id='tab'>
+	<input type='button' value='hehe' class='active'>
+	<input type='button' value='haha'>
+	<input type='button' value='hen'>
+	<div style='display:block'>sadkj</div>
+	<div>asjdklajsdlaksd</div>
+	<div>adkasdj;ajsda</div>
+</div>
+<!--
+<div id='tab2'>
+	<input type='button' value='hehe' class='active'>
+	<input type='button' value='haha'>
+	<input type='button' value='hen'>
+	<div style='display:block'>sadkj</div>
+	<div>asjdklajsdlaksd</div>
+	<div>adkasdj;ajsda</div>
+</div>
+
+-->
+<script type="text/javascript">
+	
+
+	function TabNode(node){
+		var _this = this;
+		this.node = node;
+
+		//声明的东西
+		this.varNode(node);
+
+		//Event基础事件
+		this.tabEvent(_this);
+
+		//定时器模块
+		this.Interval && (this.IntervalSet(_this),this.CancelInterval(_this));
+	};
+	TabNode.prototype = {
+		'varNode':function(node){
+			this.allInput = node.Node.getElementsByTagName('input');
+			this.allDiv = node.Node.getElementsByTagName('div');
+			this.Interval = node.Interval;
+			this.Interval && (this.setInter = null,this.setIndex = 0);
+		},
+		'tabEvent':function(_this){
+			for(var i = 0;i < this.allInput.length;i++){
+				this.allInput[i].index = i;
+				this.allInput[i].onclick = function(){
+					for(var i = 0;i < _this.allInput.length;i++){
+						_this.allInput[i].className = '';
+						_this.allDiv[i].style.display = 'none';
+					}
+				
+					this.className = 'active';
+					_this.allDiv[this.index].style.display = 'block';
+
+					_this.node.Interval && (_this.setIndex = this.index);
+
+				}
+			}
+		},
+
+		'CancelInterval':function(_this){
+			this.node.Node['onmouseover'] = function(){
+				clearInterval(_this.setInter);
+			};
+			this.node.Node['onmouseout'] = function(){
+				_this.IntervalSet(_this);
+			}
+		},
+		'IntervalSet':function(_this){
+			clearInterval(this.setInter);
+			this.setInter = setInterval(function(){
+				_this.setIndex++;
+				if(_this.setIndex == _this.allInput.length)_this.setIndex = 0;
+
+				for(var i = 0;i < _this.allInput.length;i++){
+					_this.allInput[i].className = '';
+					_this.allDiv[i].style.display = 'none';
+				}
+
+				_this.allInput[_this.setIndex].className = 'active';
+				_this.allDiv[_this.setIndex].style.display = 'block';
+
+
+			},this.node.IntervalTime);
+		}
+	};
+	
+	//Leo       json    
+	//Node      外面元素      object
+	//Interval               boolean  开启／关闭
+	//IntervalTime 开启时间   number
+
+	new TabNode({
+		Node:document.getElementById('tab'),
+		Interval:true,
+		IntervalTime : 1000
+	});
+
+	
+
+/*
+	new TabNode({
+		Node:document.getElementById('tab2'),
+		Interval:false,
+		IntervalTime : 10
+	});
+*/
+
+	//{
+	//	Node:document.getElementById('tab2'),
+	//	Interval:false,
+	//	IntervalTime : 10
+	//}
+
+console.log(navigator.userAgent)
+</script>
+</body>
+</html>

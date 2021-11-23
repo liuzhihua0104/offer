@@ -74,4 +74,35 @@
 
 	// https://www.bilibili.com/video/av66105561/
 	// JavaScript运算符typeof和instanceof的区别 - Web前端工程师面试题讲解
+
+
+
+	var obj1 = {
+		age: 56,
+		arr: [1, 2, 3, 4, 5]
+	}
+
+	var obj2 = {}
+	
+	function deepCopy(obj1, obj2) {
+
+		for (var key in obj1) {
+			if(typeof obj1[key]=="object"){
+				obj2[key]=obj1[key].constructor==Array?[]:{};
+				deepCopy(obj1[key],obj2[key])
+				
+			}else{
+				obj2[key]=obj1[key]
+			}
+		}
+		return obj2
+	}
+	
+	console.log(deepCopy(obj1, obj2) )
+	
+	obj1.age=15;
+	obj2.age=16;
+	obj1.arr[1]="rose";
+	console.log(obj1)
+	console.log(obj2)
 </script>

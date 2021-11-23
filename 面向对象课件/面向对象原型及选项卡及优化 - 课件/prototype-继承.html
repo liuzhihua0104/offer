@@ -1,0 +1,39 @@
+<!doctype html> 
+<html> 
+<head> 
+    <meta charset="utf-8"> 
+    <title></title> 
+</head>
+<body>
+<script type="text/javascript">
+	
+/*
+function fff(){
+	alert(1);
+};
+window.onclick = fff();
+*/
+
+function a(){
+	//this.c();
+	//this.c();
+	//this.m = 20;
+	var _this = this;
+	this.f = _this.c;
+	//alert(this.f);
+	//this.f();
+};
+function b(){
+	//alert(1)
+	a.call(this);
+	this.f();
+};
+
+a.prototype.c = function(){
+	alert(1);
+};
+new b();
+
+</script>
+</body>
+</html>

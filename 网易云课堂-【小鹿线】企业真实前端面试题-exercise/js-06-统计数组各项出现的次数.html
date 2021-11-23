@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	var arr = [1, 1, 2, 3, 5, 5, 5, 5, 5, 5, 6, 7, 8, 9]
+
+	function count(arr) {
+		let obj = {};
+		for (var i = 0; i < arr.length; i++) {
+			if (obj[arr[i]]) {
+				obj[arr[i]] = obj[arr[i]] + 1
+			} else {
+				obj[arr[i]]=1;
+			}
+		}
+		return obj;
+	}
+
+	console.log(count(arr))
+</script>

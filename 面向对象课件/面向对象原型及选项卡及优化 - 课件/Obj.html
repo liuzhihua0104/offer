@@ -1,0 +1,23 @@
+<!doctype html> 
+<html> 
+<head> 
+    <meta charset="utf-8"> 
+    <title></title> 
+</head>
+<body>
+<script type="text/javascript">
+	
+function a(){
+	this.f = 10;
+	this.k = function(){
+		alert(1);
+	}
+}
+a.prototype.l = function(){
+	alert(this.f);
+}
+new a().k();
+
+</script>
+</body>
+</html>
