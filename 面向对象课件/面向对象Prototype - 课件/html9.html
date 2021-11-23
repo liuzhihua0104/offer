@@ -1,0 +1,28 @@
+<!doctype html> 
+<html> 
+<head> 
+    <meta charset="utf-8"> 
+    <title></title> 
+</head>
+<body>
+<script type="text/javascript">
+
+this.m = 15;
+function a(m){
+	this.m = m;
+};
+a.prototype = {
+	's':function(){
+		return this.m + 5;
+	}
+};
+function b(x){
+	a.call(this,x);
+	/*this.m = 10;*/
+};
+b.prototype = a.prototype;
+alert(new b(this.m).s());
+
+</script>
+</body>
+</html>

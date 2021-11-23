@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+*{ margin:0; padding:0; list-style:none;}
+img{ border:none;}
+.big{ width:920px; height:320px; position:absolute; left:50%; top:50%; margin-left:-460px; margin-top:-160px; border:1px solid black; overflow:hidden;}
+.big .sMove{  height:300px; position:absolute;left:0; top:0;transition:0.3s;}
+.big .sMove li{ width:920px; height:300px; float:left;}
+.big .sNav{ width:920px; height:20px; position:absolute; bottom:0; left:0; background:black;}
+.big .sNav ol{ width:220px; height:10px; margin:5px auto;}
+.big .sNav ol li{ width:50px; height:10px; margin-right:5px; background:white; float:left; cursor:pointer;}
+.big .sNav ol li div{ width:0; height:10px; background:#3CF;}
+</style>
+
+<title>Untitled Document</title>
+</head>
+
+<body>
+<div class="big" id="big">
+	<ul class="sMove" id='sMove'>
+    	<li style="background:green"></li>
+        <li style="background:yellow"></li>
+        <li style="background:blue"></li>
+        <li style="background:red"></li>
+    </ul>
+    <div class="sNav" id='sNav'>
+    	<ol>
+        	<li><div></div></li>
+            <li><div></div></li>
+            <li><div></div></li>
+            <li><div></div></li>
+        </ol>
+    </div>
+</div>
+
+<script type="text/javascript">
+    
+sMove.style.width = sMove.children[0].offsetWidth * sMove.children.length + 'px';
+var allDiv = sNav.getElementsByTagName('div');
+var w = 0;
+var index = 0;
+var timer = null;
+timer = setInterval(function(){
+    if(w == 100){
+        if(index == allDiv.length - 1)index = -1;
+        w = 0;
+        index++;
+        for(var i = 0;i < allDiv.length;i++){
+            allDiv[i].style.width = 0;
+        };
+
+
+    }
+    w++;
+    sMove.style.left = -sMove.children[0].offsetWidth * index + 'px';
+    allDiv[index].style.width = w + '%';
+},30);
+
+
+</script>
+</body>
+</html>

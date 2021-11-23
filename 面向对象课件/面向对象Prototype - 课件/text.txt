@@ -1,0 +1,21 @@
+原型链prototype
+是给原型加方法的
+
+如果给object 链接原型链 那么所有的原型都等于链接了这个原型链
+
+prototype 可以用json的方式去赋予
+
+prototype 继承的方法
+licuan.prototype = sunmin.prototype;
+好处就是简单
+不好之处 就是 不精准
+
+更精准的可以用自己的想要的方法 等于别人的方法
+licuan.prototype.mm = sunmin.prototype.mm;
+
+for in也可以继承
+
+全部继承了
+licuan.prototype = new sunmin();
+
+函数运行自己不加括号 那么就会把自己返回出来

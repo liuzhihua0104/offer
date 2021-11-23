@@ -1,0 +1,86 @@
+<!doctype html> 
+<html> 
+<head> 
+    <meta charset="utf-8"> 
+    <title></title>
+    <style type="text/css">
+
+*{margin: 0;padding: 0;list-style: none;}
+#div{width: 100px;height: 100px;position: absolute;left: 0;top: 0;cursor: pointer;background: black;}
+
+    </style> 
+</head>
+<body>
+<div id='div'></div>
+<script type="text/javascript">
+	
+
+function Darg(dom,opt){
+	this.dom = dom;
+	var _this = this;
+	this.left = opt.left;
+	this.top = opt.top;
+	this.right = opt.right;
+	this.bottom = opt.bottom;
+	this.resize = opt.resize;
+	this.resize && this.DargResize();
+	this.dom.onmousedown = function(e){
+		_this.DargMouseDown(e);
+		_this.DargMouseMove(e);
+		_this.DargEnd();	
+		return false;
+	};
+};
+Darg.prototype = {
+	'DargMouseMove':function(e){
+		var _this = this;
+		document.onmousemove = function(e){
+			_this.ev = e || event;
+			_this.needLeft = _this.ev.clientX - _this.l;
+			_this.needTop = _this.ev.clientY - _this.t;
+			_this.maxLeft = innerWidth-_this.dom.offsetWidth;
+			_this.maxTop = innerHeight - _this.dom.offsetHeight;
+
+			!_this.left && (_this.needLeft = _this.needLeft<0?0:_this.needLeft);
+			!_this.top && (_this.needTop = _this.needTop < 0 ? 0 : _this.needTop);
+			!_this.right && (_this.needLeft = _this.needLeft > _this.maxLeft ? _this.maxLeft : _this.needLeft);
+
+			!_this.bottom && (_this.needTop = _this.needTop > _this.maxTop ? _this.maxTop : _this.needTop);
+
+			_this.dom.style.left = _this.needLeft + 'px';
+			_this.dom.style.top = _this.needTop + 'px';
+		}
+	},
+	'DargEnd':function(){
+		document.onmouseup = function(){
+			document.onmousemove = null;
+			document.onmouseup = null;
+		};
+	},
+	'DargMouseDown':function(e){
+		this.ev = e || event;
+		this.l = this.ev.clientX - this.dom.offsetLeft;
+		this.t = this.ev.clientY - this.dom.offsetTop;
+	},
+	'DargResize':function(){
+		var _this = this;
+		onresize = function(){
+			if(_this.dom.offsetLeft+_this.dom.offsetWidth > innerWidth){
+				_this.dom.style.left = innerWidth - _this.dom.offsetWidth + 'px';
+			}
+		}
+	}
+};
+
+new Darg(div,{
+	'left':false,
+	'top':false,
+	'bottom':false,
+	'right':false,
+	'resize':false
+});
+
+
+</script>
+</body>
+</html>

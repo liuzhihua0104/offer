@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+*{ margin:0; padding:0;}
+#div1{ width:312px; margin:50px auto; position:relative;}
+.small{ width:310px; height:310px; border:1px solid #cdcdcd; overflow:hidden; left:0; top:0; position:absolute;}
+.mark{ position:absolute; width:100%; height:100%; background:#ff0000; filter:alpha(opacity:0); opacity:0; z-index:2;cursor:move;}
+.float1{ width:100px; height:100px; background:#fede4f; border:1px solid #aaa; filter:alpha(opacity:50);opacity:0.5; position:absolute;  display:none;}
+.big{ width:310px; height:310px; border:1px solid #cdcdcd; overflow:hidden; position:absolute; left:320px; top:0; display:none;}
+.big img{ position:absolute; left:0; top:0;}
+#list{ width:288px; height:46px; overflow:hidden; position:absolute; left:10px; top:320px;}
+#list ul{ position:absolute; left:0;}
+#list li{ list-style:none; float:left; padding:4px; overflow:hidden; width:40px; height:40px;}
+#list li img{ border:1px solid #cdcdcd;}
+#list .active img{  border:1px solid #ff0000;}
+#left{ width:10px; height:45px; display:block; background:url(images/left.gif) no-repeat; position:absolute; top:322px; left:0; cursor:pointer;}
+#right{ width:10px; height:45px; display:block; background:url(images/right.gif) no-repeat; position:absolute; top:322px; left:300px; cursor:pointer;}
+</style>
+
+</head>
+
+<body>
+<div id="div1">
+	<div class="small" id='small'>
+    	<span class="float1" id='float1'></span>
+    	<div class="mark"></div>
+        <img src="images/m1.jpg" width="310" height="310" id='mImage' />
+    </div>
+    <div class="big" id='big'>
+    	<img src="images/b1.jpg" id='Bimg' />
+    </div>
+    <span id="left"></span>
+    <span id="right"></span>
+    <div id="list">
+    	<ul id='sUl'>
+        	<li class="active"><img src="images/s1.jpg" /></li>
+        	<li><img src="images/s2.jpg" /></li>
+        	<li><img src="images/s3.jpg" /></li>
+            <li><img src="images/s4.jpg" /></li>
+        	<li><img src="images/s5.jpg" /></li>
+            <li><img src="images/s6.jpg" /></li>
+            <li><img src="images/s7.jpg" /></li>
+            <li><img src="images/s8.jpg" /></li>
+        	<li><img src="images/s9.jpg" /></li>
+            <li><img src="images/s10.jpg" /></li>
+        </ul>
+    </div>
+</div> 
+<script type="text/javascript">
+    
+    var allLi = list.getElementsByTagName('li');
+    var arr = [];
+    for(var i = 0;i < allLi.length;i++){
+        arr.push(allLi[i]);
+    };
+    small.onmouseover = function(){
+        float1.style.display = 'block';
+        big.style.display = 'block';
+    };
+    small.onmouseout = function(){
+        float1.style.display = 'none';
+    };
+    small.onmousemove = function(e){
+        var ev = e || event;
+        var l = ev.clientX- div1.offsetLeft - float1.offsetWidth/2;
+        var t = ev.clientY- div1.offsetTop - float1.offsetHeight/2;
+        var maxL = Bimg.offsetWidth - (Bimg.parentNode.offsetWidth - 2);
+        var maxT = Bimg.offsetHeight - (Bimg.parentNode.offsetHeight - 2);
+        //alert(maxL);
+        l = l < 0 ? 0 : l;
+        l = l > small.offsetWidth - float1.offsetWidth -2  ? small.offsetWidth - float1.offsetWidth - 2 : l; 
+        t = t < 0 ? 0 : t;
+        t = t > small.offsetHeight - float1.offsetHeight -2  ? small.offsetHeight - float1.offsetHeight - 2 : t;
+        float1.style.left = l  + 'px';
+        float1.style.top = t + 'px';
+        var needO = float1.offsetLeft / ((small.offsetWidth - 2) - float1.offsetWidth);
+        var needM = float1.offsetTop / ((small.offsetHeight - 2) - float1.offsetHeight);
+        Bimg.style.left = -maxL * needO + 'px';
+        Bimg.style.top = - maxT * needM + 'px';
+    }
+
+    for(var i = 0;i < allLi.length;i++){
+        allLi[i].onmouseover = function(){
+            for(var i = 0;i < allLi.length;i++){
+                allLi[i].className ='';
+            }
+            var src = this.children[0].src;
+            var forSrc = src.substring(0,this.children[0].src.lastIndexOf('/')+1);
+            var lastSrc = src.substring(this.children[0].src.lastIndexOf('/')+2);
+            mImage.src = forSrc +'m' +lastSrc;
+            Bimg.src = forSrc + 'b' + lastSrc;
+            //alert(forSrc)
+            //alert()
+            this.className = 'active';
+        };
+    }
+    //console.log(arr);
+    left.onclick = function(){
+        arr.push(arr.shift());
+        sUl.innerHTML = '';
+        for(var i = 0;i < arr.length;i++){
+            sUl.appendChild(arr[i]);
+        };
+        for(var i =0;i < allLi.length;i++){
+            allLi[i].className = '';
+        }
+        allLi[0].className = 'active';
+
+        var src = allLi[0].children[0].src;
+        var forSrc = src.substring(0,allLi[0].children[0].src.lastIndexOf('/')+1);
+        var lastSrc = src.substring(allLi[0].children[0].src.lastIndexOf('/')+2);
+        mImage.src = forSrc +'m' +lastSrc;
+        Bimg.src = forSrc + 'b' + lastSrc;
+    };
+    right.onclick = function(){
+        arr.unshift(arr.pop());
+        sUl.innerHTML = '';
+        for(var i = 0;i < arr.length;i++){
+            sUl.appendChild(arr[i]);
+        };
+        for(var i =0;i < allLi.length;i++){
+            allLi[i].className = '';
+        }
+        allLi[0].className = 'active';
+        var src = allLi[0].children[0].src;
+        var forSrc = src.substring(0,allLi[0].children[0].src.lastIndexOf('/')+1);
+        var lastSrc = src.substring(allLi[0].children[0].src.lastIndexOf('/')+2);
+        mImage.src = forSrc +'m' +lastSrc;
+        Bimg.src = forSrc + 'b' + lastSrc;
+    };
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!doctype html> 
+<html> 
+<head> 
+    <meta charset="utf-8"> 
+    <title></title> 
+</head>
+<body>
+<script type="text/javascript">
+/*
+function a(){
+	alert(1);
+};
+alert(a);
+*/
+
+var json = {};
+var c = 'kkk';
+json.a = function(){
+	alert(1);
+};
+json[c] = function(){
+	alert(2);
+};
+json.kkk();
+//alert(json.a())
+/*
+var json = {
+	'a':function(){
+		this.b = 10;
+	},
+	'b':1
+};
+*/
+/*
+json.a();
+alert(json.b)
+*/
+
+</script>
+</body>
+</html>

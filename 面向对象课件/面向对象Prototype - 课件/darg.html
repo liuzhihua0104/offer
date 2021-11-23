@@ -1,0 +1,44 @@
+<!doctype html> 
+<html> 
+<head> 
+    <meta charset="utf-8"> 
+    <title></title>
+    <style type="text/css">
+
+*{margin: 0;padding: 0;list-style: none;}
+#div{width: 100px;height: 100px;position: absolute;left: 0;top: 0;cursor: pointer;background: black;}
+
+    </style> 
+</head>
+<body>
+<div id='div'></div>
+<script type="text/javascript">
+	
+
+new Darg(div);
+function Darg(dom){
+	this.dom = dom;
+	//alert(this.dom)
+	this.dom.onmousedown = function(e){
+		var ev = e || event;
+		var l = ev.clientX - dom.offsetLeft;
+		var t = ev.clientY - dom.offsetTop;
+
+		document.onmousemove = function(e){
+			var ev = e || event;
+			dom.style.left = ev.clientX - l + 'px';
+			dom.style.top = ev.clientY - t + 'px';
+
+		};
+
+		document.onmouseup = function(){
+			document.onmousemove = null;
+			document.onmouseup = null;
+		};
+		return false;
+	}
+}
+
+</script>
+</body>
+</html>

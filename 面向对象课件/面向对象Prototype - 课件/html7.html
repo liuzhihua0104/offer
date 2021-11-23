@@ -1,0 +1,39 @@
+<!doctype html> 
+<html> 
+<head> 
+    <meta charset="utf-8"> 
+    <title></title> 
+</head>
+<body>
+<script type="text/javascript">
+
+function sunmin(){
+	this.a = 5;
+	this.b = 10;
+};
+sunmin.prototype = {
+	'mm':function(){
+		alert(this.a + this.b)
+	},
+	'nn':function(){
+		alert(2);
+	}
+}
+
+function licuan(){
+	sunmin.call(this);
+};
+
+for(var i in sunmin.prototype){
+	//li.pro.mm = sunmin.pro.mm
+	//li.pro.nn = sunmin.pro.nn;
+	licuan.prototype[i] = sunmin.prototype[i];
+}
+/*
+licuan.prototype.mm = sunmin.prototype.mm;
+*/
+new licuan().nn();
+
+</script>
+</body>
+</html>
