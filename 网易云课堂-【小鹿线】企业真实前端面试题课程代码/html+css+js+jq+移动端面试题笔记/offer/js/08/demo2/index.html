@@ -31,13 +31,13 @@ a.fun(3);  //0
 
 //n=0
 //o=undefined
-var b = fun(0).fun(1).fun(2).fun(3);
+var b = fun(0).fun(1).fun(2).fun(3); //只执行了return
 
 //n=0
 //o=undefined 
 var c = fun(0).fun(1);
-c.fun(2)
-c.fun(3);
+c.fun(2)  //把c重新来了一遍
+c.fun(3);  //把c重新来了一遍
 
 </script>
 	
