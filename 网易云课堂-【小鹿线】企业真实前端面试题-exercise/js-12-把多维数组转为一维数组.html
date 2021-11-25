@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+  
+</body>
+
+</html>
+<script>
+let arr=[1,2,[3],[[4]],[[[5,6]]],[7]]
+
+let newArr=[]
+
+function get(arr){
+	for(var i=0;i<arr.length;i++){
+		if(arr[i] instanceof Array){
+			get(arr[i])
+		}else{
+			newArr.push(arr[i])
+		}
+	}	
+}
+get(arr);
+console.log(newArr)
+
+
+
+
+</script>
