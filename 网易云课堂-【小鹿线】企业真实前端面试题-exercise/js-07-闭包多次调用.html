@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+
+function Foo(){
+	var i=0;
+	return function(){
+		console.log(i++) //注意 i++ 和 ++i的区别
+		// console.log(++i) 
+	}
+}
+
+var f1=Foo();var f2=Foo();
+f1();//0
+f1();//1
+
+f2();//01
+f2(); //01
+
+
+
+</script>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	let arr = [1, 2, 3]
+
+	function isArray(arr) {
+		// 两种方法
+		// 不能用typeof arr,他只能得到一个"object"
+		// if(arr instanceof Array){return "数组"}
+		console.log(arr.__proto__ == Array.prototype) // true
+		if (arr.__proto__.constructor == Array) {
+			return "数组"
+		}
+
+
+		// arr.__proto__ 就是指向原型的prototype
+	}
+
+	console.log(isArray(arr))
+</script>
