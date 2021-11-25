@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">添加li的按钮</button>
+    <ul id="ul">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+
+    </ul>
+</body>
+
+</html>
+<script>
+
+    let ul = document.getElementById("ul")
+    let btn = document.getElementById("btn")
+    let lis = document.getElementsByTagName("li")
+
+    // for (var i = 0; i < lis.length; i++) {
+    //     lis[i].onclick = function () {
+    //         this.style.background = "red"
+    //     }
+    // }
+
+    // 动态新增的就没办法绑定onclick方法了
+    btn.onclick = function () {
+        var newLi = document.createElement("li")
+        newLi.innerHTML = "新增的"
+        ul.appendChild(newLi)
+    }
+
+
+    // 利用委托就可以给动态生成的元素绑定方法
+    ul.onclick = function (event) {
+        let e = window.event || event;
+        let target = e.target || e.srcElement;
+        console.log(target);
+        console.log(target.nodeName == "LI");
+
+        if (target.nodeName == "LI") {
+            target.style.background = "yellow"
+        }
+
+
+        // console.log(window.event || event);
+
+
+    }
+
+
+
+
+</script>
