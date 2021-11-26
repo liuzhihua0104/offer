@@ -98,5 +98,112 @@
 	// 缺点：调用了两次父类构造函数（耗内存），子类的构造函数会代替原型上的那个父类构造函数
 
 
+	// 4.原型式继承
+	function CeateObj(o){
+		function F(){}
+		F.prototype=o
+		console.log(o._proto_===Object.prototype)
+		console.log(F.prototype.constructor===Object);//true
+		return new F()
+	}
 
+	var person={
+		name:'xiaopao',
+		friend:['daisy','kelly']
+	}
+
+	var person1=CreateObj(person)
+
+	// var person2=CreateObj(person)
+
+	person1.name='person1'
+	// console.log(person2.name);//xiaopao
+	person1.friend.push('taylor')
+	// console.log(person2.friend);//['daisy','kelly','taylor']
+	// console.log(person);//{name:'xiaopao',friend:Array(3)}
+	person1.friend=['lulu']
+	// console.log(person1.friend);//["lulu"]
+	// console.log(person.friend)://["daisy","kelly","taylor"]
+	// 注意：这里修改了person1.name的值，person2.name的值并未改变，并不是因为person1和person2有独立的name值，
+	// 而是person1.name='person1'是给person1添加了name值，并非修改了原型上的name值
+	// 因为我们找对象上的属性时，总是先找实例上对象，没有找到的话再去原型对象上的属性。
+	// 实例对象和原型对象上如果有同名属性，总是先取实例对象上的值
+
+	// 重点：用一个函数包装一个对象，然后返回这个函数的调用，这个函数就变成了个可以随意增添属性的实例或对象。Object.create()就是这个原理。
+
+	// 优点：类似于复制一个对象，用函数来包装。
+
+	// 缺点：1、所有实例都会继承原型上的属性。
+	// 2、无法实现复用。（新实例属性都是后面添加的）
+
+
+	// 5.寄生式继承
+	var ob={
+		name:'xiaopao',
+		friends:['lulu','huahua']
+	}
+
+	function CreateObj(o){
+		function F(){};//创建一个构造函数F
+		F.prototype=o
+		return new F()
+	}
+
+	// 上面CreateObj函数 在ECMAScript5 有了一新的规范写法，Object.create(ob) 效果是一样的，看下面代码
+	var ob1=CreateObj(ob)
+	var ob2=Object.create(ob)
+	console.log(ob1.name);//xiaopao
+	console.log(ob2.name);//xiaopao
+
+	function CreateChild(o){
+		var newob=CreateObj(o);//创建对象 或者用 var newob=Object.create(ob)
+		newob.sayName=function(){//增强对象
+			console.log(this.name)
+		}
+		return newob;//指定对象
+	}
+
+	var p1=CreateChild(ob)
+	p1.sayName();//xiaopao
+
+	// 重点：就是给原型式继承外套了个壳子。
+	// 优点：没有创建自定义类型，因为只是套了个壳子返回对象（这个），这个函数顺理成章就成了创建的新对象。
+	// 缺点：没用到原型，无法复用。
+
+
+	// 6.寄生组合式继承（常用）
+	function Parent(name){
+		this.name=name
+		this.colors=['red','blue','green']
+	}
+
+	Parent.prototype.sayName=function(){
+		console.log(this.name)
+	}
+
+	function Child(name,age){
+		Parent.call(this,name)
+		this.age=age
+	}
+
+	function CreateObj(o){
+		function F(){}
+		F.prototype=o
+		return new F()
+	}
+
+	// Child.prototype=new Parent();//这里换成下面
+	function prototype(child,parent){
+		var prototype=CeateObj(parent.prototype)
+		prototype.constructor=child
+		child.prototype=prototype
+	}
+	prototype(Child,Parent)
+
+	var child1=new Child('xiaopao',18)
+	console.log(child1)
+
+	// 重点：修复了组合继承的问题
+
+	
 </script>
