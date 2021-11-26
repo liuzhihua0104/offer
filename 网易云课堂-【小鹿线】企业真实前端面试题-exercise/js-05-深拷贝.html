@@ -88,6 +88,8 @@
 
 		for (var key in obj1) {
 			if(typeof obj1[key]=="object"){
+				console.log(obj1[key] instanceof Array)
+				console.log(obj1[key].constructor== Array)
 				obj2[key]=obj1[key].constructor==Array?[]:{};
 				deepCopy(obj1[key],obj2[key])
 				
@@ -97,8 +99,7 @@
 		}
 		return obj2
 	}
-	
-	console.log(deepCopy(obj1, obj2) )
+		console.log(deepCopy(obj1, obj2) )
 	
 	obj1.age=15;
 	obj2.age=16;
