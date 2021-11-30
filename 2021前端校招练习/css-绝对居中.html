@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> css绝对居中- (不定宽高) flex布局 </title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* 定宽高 绝对定位+marin负值 */
+
+    .box-wrapper1 {
+      width: 200px;
+      height: 200px;
+      position: relative;
+      background: #000;
+      border: 1px solid red;
+
+    }
+
+    .box1 {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-left: -50px;
+      margin-top: -50px;
+      background: red;
+    }
+
+
+    /* 定宽高 绝对定位+marin负值 */
+
+    .box-wrapper2 {
+      width: 200px;
+      height: 200px;
+      position: relative;
+      background: #000;
+      border: 1px solid red;
+
+    }
+
+    .box2 {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      background: yellowgreen;
+    }
+
+
+
+    /* 定宽高 绝对定位+transform负值 */
+
+    .box-wrapper3 {
+      width: 200px;
+      height: 200px;
+      position: relative;
+      background: #000;
+      border: 1px solid red;
+
+    }
+
+    .box3 {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: yellow;
+    }
+
+
+    /* table-cell */
+
+    .box-wrapper4{
+      width:200px;
+      height:200px;
+      background: #000;
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+    }
+    .box4{
+      width:100px;
+      height:100px;
+      background: red;
+      display: inline-block;
+    }
+
+    /* flex */
+    .box-wrapper5{
+      width:200px;
+      height:200px;
+      background: #000;  
+      display: flex;
+      justify-content: center;
+      align-items:center;
+    }
+
+    .box5{
+      width:100px;
+      height:100px;
+      background: red;
+      display: inline-block;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box-wrapper1">
+    <div class="box1">
+      flex布局
+    </div>
+  </div>
+
+  <div class="box-wrapper2">
+    <div class="box2">
+      flex布局
+    </div>
+  </div>
+
+  <div class="box-wrapper3">
+    <div class="box3">
+      flex布局
+    </div>
+  </div>
+
+  <div class="box-wrapper4">
+    <div class="box4">
+      flex布局
+    </div>
+  </div>
+
+  <div class="box-wrapper5">
+      <div class="box5">
+        flex布局
+      </div>
+    </div>
+</body>
+
+</html>
