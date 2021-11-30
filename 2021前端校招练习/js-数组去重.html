@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title></title>
+	</head>
+	<body>
+
+	</body>
+</html>
+<script>
+	// [1,2,3,4,5,2,3]
+	// [{name:"freemen",age:"20"},{name:"mukwang",age:"20"}]
+
+
+	let arr = [1, 2.3, 2.3, 3.3, 4, 5, 4];
+	// 数组求和
+	// let he = arr.reduce((pre, current,sourceIndex,arr) => {
+	// 	return pre + current;
+	// })
+	// console.log(he)
+
+	// 判断是不是数组
+
+	function checkArray(arr) {
+		if (!Array.isArray(arr)) {
+			return "不是数组"
+		}
+	}
+
+	console.log(checkArray)
+
+	console.log(checkArray({}))
+
+
+	//1 filter 和 indexof配合使用
+	let result = arr.filter((item, index) => {
+		return arr.indexOf(item) === index
+	})
+	console.log(result)
+
+	//2 相邻元素排序,先排序在去重
+	let arr1 = arr.sort();
+	console.log(arr1)
+	let result1 = [];
+	for (var i = 0; i < arr1.length; i++) {
+		if (arr1[i] != arr[i - 1]) {
+			result1.push(arr[i])
+		}
+	}
+	console.log(result1)
+
+
+	//3 set解构赋值
+
+	console.log([...new Set(arr1)])
+
+
+	// 4 Array.from
+	console.log(Array.from(new Set(arr1)))
+
+
+
+	// 对象数组去重========================
+	const array = [{
+		name: "freemen",
+		age: "20"
+	}, {
+		name: "mukwang",
+		age: "20"
+	}, {
+		name: "mukwang",
+		age: "13"
+	}]
+
+	// 临时对象缓存数组项key值 
+	function unique(array, key) {
+		let result = [];
+		let template = {}
+		for (var i = 0; i < array.length; i++) {
+			let keyname = array[i][key];
+			if (template[keyname]) {
+				continue
+			} else {
+				result.push(array[i]);
+				template[keyname] = true;
+			}
+		}
+		return result;
+	}
+
+	console.log(unique(array, "age"))
+
+
+	// 使用reduce
+	function uniqueReduce(array, key) {
+		let result = [];
+		let template = {}
+
+		return array.reduce((pre, current) => {
+			if (!template[current[key]]) {
+				template[current[key]] = true;
+				pre.push(current)
+			}
+
+			return pre
+		}, [])
+	}
+
+	console.log(uniqueReduce(array, "age"))
+</script>

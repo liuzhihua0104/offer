@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	const array = [1, 2, 3, 4, [5, 6, [7, 8, [9, 10]]]]
+
+	// 数组拍平就是把多维数组变成一维数组
+	// function flatten(array, arr = []) {
+	// 	for (var i = 0; i < array.length; i++) {
+	// 		if (Array.isArray(array[i])) {
+	// 			flatten(array[i], arr)
+	// 		} else {
+	// 			arr.push(array[i])
+	// 		}
+	// 	}
+	// 	return arr;
+	// }
+
+	// console.log(flatten(array))
+
+
+
+
+	// function flatten(array) {
+	// 	return array.reduce((pre, current) => {
+	// 		if (current instanceof Array) {
+	// 			console.log(1)
+	// 			flatten(current, pre)F
+	// 			pre=pre.concat(current)
+	// 			console.log(pre)
+	// 		}
+	// 		return pre
+	// 	}, [])
+	// }
+
+	// 上面的方法都是我自己瞎写的
+
+	// 1、使用reduce
+	// function flatten(array) {
+	// 	return array.reduce((pre, current) => {
+	// 		return pre.concat(current instanceof Array ? flatten(current) : current)
+
+	// 	}, [])
+	// }
+
+
+	// console.log(flatten(array))
+
+	// 2\es6里面的方法
+	// console.log(array.flat(Infinity))
+
+	// 使用 while 方法
+
+	function flatten(array) {
+		while (array.some(Array.isArray)) {
+			array = [].concat(...array)
+		}
+		return array;
+	}
+
+	console.log(flatten(array))
+</script>
