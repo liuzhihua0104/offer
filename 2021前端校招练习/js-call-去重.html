@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	// call判断数据类型、类数组转数组
+	let arrObj = {
+		0: "arr1",
+		1: "arr2",
+		2: "arr3",
+		3: "arr4",
+		length: 4
+	}
+
+	let type = Object.prototype.toString.call(arrObj);
+	// console.log(type=="[object String]")
+	console.log(type) //[object Object]
+
+	let arr = Array.prototype.slice.call(arrObj)
+	console.log(arr)
+
+
+	// apply  对给定数组求最大值/最小值
+	let a = [5, 4, 6, 8, 4];
+	// console.log(Math.max.apply(a,a));
+	console.log(Math.max.apply(null, a));
+</script>
