@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	let value = 0;
+	Object.defineProperty(window, "a", {
+		get() {
+			console.log(1)
+			return value += 1;
+		}
+	})
+
+	// 怎么使if语句里面的式子成立,利用了每次都会去获取数据，走一遍上面的get方法
+	if (a == 1 && a == 2 && a == 3) {
+		console.log("object")
+	}
+</script>
