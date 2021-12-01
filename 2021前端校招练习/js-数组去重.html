@@ -15,18 +15,25 @@
 	// [{name:"freemen",age:"20"},{name:"mukwang",age:"20"}]
 
 
-	let arr = [1, 2.3, 2.3, 3.3, 4, 5, 4];
+	let arr = [1, 2.3, 2.3, 3.3, 4, 5, 5];
 	// 数组求和
 	// let he = arr.reduce((pre, current,sourceIndex,arr) => {
 	// 	return pre + current;
 	// })
 	// console.log(he)
 
+	let he = arr.reduce((pre, current) => {
+		return pre + current
+	})
+	console.log(he);
+
 	// 判断是不是数组
 
 	function checkArray(arr) {
 		if (!Array.isArray(arr)) {
-			return "不是数组"
+			// return "不是数组"
+			// throw new Error("不是")
+			console.log("");
 		}
 	}
 
@@ -36,18 +43,30 @@
 
 
 	//1 filter 和 indexof配合使用
+	// let result = arr.filter((item, index) => {
+	// 	return arr.indexOf(item) === index
+	// })
+
 	let result = arr.filter((item, index) => {
 		return arr.indexOf(item) === index
 	})
 	console.log(result)
 
 	//2 相邻元素排序,先排序在去重
+	// let arr1 = arr.sort();
+	// console.log(arr1)
+	// let result1 = [];
+	// for (var i = 0; i < arr1.length; i++) {
+	// 	if (arr1[i] != arr[i - 1]) {
+	// 		result1.push(arr[i])
+	// 	}
+	// }
+
 	let arr1 = arr.sort();
-	console.log(arr1)
 	let result1 = [];
 	for (var i = 0; i < arr1.length; i++) {
-		if (arr1[i] != arr[i - 1]) {
-			result1.push(arr[i])
+		if (arr1[i] != arr1[i - 1]) {
+			result1.push(arr1[i])
 		}
 	}
 	console.log(result1)
@@ -59,8 +78,7 @@
 
 
 	// 4 Array.from
-	console.log(Array.from(new Set(arr1)))
-
+	console.log(Array.from(new Set(arr1)));
 
 
 	// 对象数组去重========================
@@ -68,24 +86,42 @@
 		name: "freemen",
 		age: "20"
 	}, {
-		name: "mukwang",
+		name: "mukwang1",
 		age: "20"
 	}, {
-		name: "mukwang",
+		name: "mukwang2",
 		age: "13"
-	}]
+	},
+	{
+		name: "mukwang3",
+		age: "13"
+	},
+	]
 
 	// 临时对象缓存数组项key值 
+	// function unique(array, key) {
+	// 	let result = [];
+	// 	let template = {}
+	// 	for (var i = 0; i < array.length; i++) {
+	// 		let keyname = array[i][key];
+	// 		if (template[keyname]) {
+	// 			continue
+	// 		} else {
+	// 			result.push(array[i]);
+	// 			template[keyname] = true;
+	// 		}
+	// 	}
+	// 	return result;
+	// }
+
 	function unique(array, key) {
-		let result = [];
+		let result = []
 		let template = {}
 		for (var i = 0; i < array.length; i++) {
-			let keyname = array[i][key];
-			if (template[keyname]) {
-				continue
-			} else {
-				result.push(array[i]);
+			let keyname = array[i][key]
+			if (!template[keyname]) {
 				template[keyname] = true;
+				result.push(array[i])
 			}
 		}
 		return result;
@@ -95,19 +131,33 @@
 
 
 	// 使用reduce
-	function uniqueReduce(array, key) {
-		let result = [];
-		let template = {}
+	// function uniqueReduce(array, key) {
+	// 	let result = [];
+	// 	let template = {}
 
+	// 	return array.reduce((pre, current) => {
+	// 		if (!template[current[key]]) {
+	// 			template[current[key]] = true;
+	// 			pre.push(current)
+	// 		}
+
+	// 		return pre
+	// 	}, [])
+	// }
+
+	function uniqueReduce(array, key) {
+		let template = {}
 		return array.reduce((pre, current) => {
 			if (!template[current[key]]) {
 				template[current[key]] = true;
 				pre.push(current)
 			}
-
 			return pre
 		}, [])
+
+
 	}
 
-	console.log(uniqueReduce(array, "age"))
+
+	console.log(uniqueReduce(array, "name"))
 </script>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<input id="input" type="text">
+	</body>
+</html>
+<script>
+	window.onload = function() {
+		// document.getElementById("input")
+		// document.getElementById("input").oninput = debounce(inputFn, 2000)
+		document.getElementById("input").oninput = throttle(inputFn, 2000)
+		// document.getElementById("input").oninput = inputFn;
+
+		function inputFn(event) {
+			console.log(event)
+		}
+
+		// 防抖：当事件出发后n秒再执行指定函数，如果n秒内触发事件，则重新计算时间,其实是个闭包，后执行
+		function debounce(fn, wait) {
+			let timer;
+			// 让输入完1秒之后再查询
+			return function(event) {
+				if (timer) {
+					clearTimeout(timer);
+				}
+				// 重新计算定时器
+				timer = setTimeout(function() {
+					fn.call(this, event)
+				}, wait)
+			}
+
+		}
+
+		// 防抖先执行
+		function debounce(fn, wait) {
+
+			let timer;
+
+			return function(event) {
+				timer && clearTimeout(timer);
+				let flag = !timer
+
+				timer = setTimeout(function() {
+					timer = null; //清空当前定时器
+				}, wait)
+
+				// 没有定时器直接执行
+				if (flag) {
+					// fn.call(this, event)
+					fn.call(this, arguments)
+				}
+			}
+		}
+
+
+		// 节流的两种方式，单位时间内触发函数的次数
+		// 1、		
+		function throttle(fn, wait) {
+			let timer;
+			return function(event) {
+				if (!timer) {   // 定时器不存在创建一个
+					timer = setTimeout(()=>{
+						timer = null;
+						fn.apply(this, arguments)
+					}, wait)
+				}
+
+			}
+		}
+
+
+		// function throttle(fn, wait) {
+		// 	let pre = 0;
+		// 	return function(event) {
+		// 		if (Date.now() - pre >= wait) {
+		// 			fn.apply(this, arguments);
+		// 			pre=Date.now()
+		// 		}
+		// 	}
+		// }
+	}
+</script>

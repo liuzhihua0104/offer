@@ -17,16 +17,18 @@
 		length: 4
 	}
 
-	let type = Object.prototype.toString.call(arrObj);
+	// let type = Object.prototype.toString.call(arrObj);
+	let type=Object.prototype.toString.call(arrObj)
 	// console.log(type=="[object String]")
 	console.log(type) //[object Object]
 
-	let arr = Array.prototype.slice.call(arrObj)
+	// let arr = Array.prototype.slice.call(arrObj)
+	let arr=Array.prototype.slice.call(arrObj)
 	console.log(arr)
 
 
 	// apply  对给定数组求最大值/最小值
 	let a = [5, 4, 6, 8, 4];
 	// console.log(Math.max.apply(a,a));
-	console.log(Math.max.apply(null, a));
+	console.log(Math.max.apply(null,a))
 </script>

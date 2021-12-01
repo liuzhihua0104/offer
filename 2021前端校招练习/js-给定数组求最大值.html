@@ -9,13 +9,22 @@
 </html>
 <script>
 	let array = [1, 2.2, 2.2, 2, 4, 6, 5, 8, 7]
-	console.log(Math.max(...array))
-	console.log(Math.max.apply(null, array))
+	// console.log(Math.max(...array))
+	// console.log(Math.max.apply(null, array))
+	console.log(Math.max.apply(null, array));
+	console.log(Math.max(...array));
 
 
 	let sortArray = array.sort();
+	console.log("12345678".split("").reverse().join(""))
 	console.log(sortArray[sortArray.length - 1])
 
+
+	// function getMax(array) {
+	// 	return array.reduce((pre, current) => {
+	// 		return current > pre ? current : pre
+	// 	})
+	// }
 
 	function getMax(array) {
 		return array.reduce((pre, current) => {

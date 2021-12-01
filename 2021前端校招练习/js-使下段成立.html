@@ -11,8 +11,7 @@
 	let value = 0;
 	Object.defineProperty(window, "a", {
 		get() {
-			console.log(1)
-			return value += 1;
+			return ++value
 		}
 	})
 
