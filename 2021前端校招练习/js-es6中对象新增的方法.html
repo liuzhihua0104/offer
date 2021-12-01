@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	let obj1 = {
+		name: "rose",
+		age: 18
+	}
+	let obj2 = {
+		name: "rose1",
+		age: 20
+	}
+	console.log(Object.is(obj1, obj2)) //false
+	console.log(Object.assign(obj1, obj2)); //{name: "rose1", age: 20}
+	console.log(Object.keys(obj1)); // ["name", "age"]
+	console.log(Object.values(obj2)); // ["rose1", 20]
+	console.log(Object.entries(obj1)); // [["name", "rose1"],  ["age", 20]]
+	
+	
+	var obj={x:1,y:2},obj2={z:3};var newObj={..obj,...obj2}
+	console.log(newObj)
+</script>

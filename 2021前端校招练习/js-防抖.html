@@ -58,29 +58,31 @@
 
 
 		// 节流的两种方式，单位时间内触发函数的次数
-		// 1、		
+
 		function throttle(fn, wait) {
 			let timer;
 			return function(event) {
-				if (!timer) {   // 定时器不存在创建一个
-					timer = setTimeout(()=>{
+				if (!timer) {
+					timer = setTimeout(() => {
+						fn.call(this, event);
 						timer = null;
-						fn.apply(this, arguments)
 					}, wait)
 				}
-
 			}
 		}
-
+	
 
 		// function throttle(fn, wait) {
 		// 	let pre = 0;
+
 		// 	return function(event) {
-		// 		if (Date.now() - pre >= wait) {
+		// 		if (Date.now() - pre > wait) {
 		// 			fn.apply(this, arguments);
-		// 			pre=Date.now()
+		// 			pre = Date.now()
 		// 		}
 		// 	}
 		// }
+
+
 	}
 </script>
