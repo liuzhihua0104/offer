@@ -31,3 +31,5 @@ function flatten(array) {
 
 const result = flatten(array);
 console.log(`result`, result);
+
+
